@@ -27,6 +27,9 @@ export function SiteHeader() {
         </div>
 
         <div className="site-header__end">
+          <Link href="/faq" className="site-header__mobile-link">
+            FAQ
+          </Link>
           <ThemeToggle className="site-header__theme" />
         </div>
       </div>

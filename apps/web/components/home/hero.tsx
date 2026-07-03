@@ -1,7 +1,7 @@
 export function HomeHero() {
   return (
     <header className="home-hero">
-      <p className="home-hero__spec">Local · nothing uploads</p>
+      <p className="home-hero__spec">100% local · nothing uploads</p>
       <h1 className="home-hero__title">
         Check the file
         <span className="home-hero__title-break" />
@@ -9,6 +9,9 @@ export function HomeHero() {
       </h1>
       <p className="home-hero__lead">
         Units, holes, stock, machine fit, tool reach.
+      </p>
+      <p className="home-hero__privacy">
+        Your STEP never leaves your computer. No account. No upload.
       </p>
     </header>
   );

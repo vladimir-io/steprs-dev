@@ -1,24 +1,26 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import { FaqJsonLd } from "@/components/seo/faq-json-ld";
+import { pageMetadata } from "@/lib/seo";
 
-import { HomeFaq } from "@/components/home/home-faq";
-import { siteConfig } from "@/lib/site";
+import { FaqPageContent } from "./faq-content";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "FAQ",
-  description: `STEP pre-flight, privacy, and open source — ${siteConfig.name}.`,
-  alternates: {
-    canonical: `${siteConfig.url}/faq`,
-  },
-};
+  description:
+    "STEP pre-flight, local WASM parsing, machine fit checks, and open-source parser — steprs.dev.",
+  path: "/faq",
+  keywords: [
+    "STEP pre-flight FAQ",
+    "client-side STEP parser",
+    "CNC privacy",
+    "Shapeoko STEP checker",
+  ],
+});
 
 export default function FaqPage() {
   return (
-    <div className="home-shell faq-page">
-      <Link href="/" className="faq-page__back">
-        ← Back to parser
-      </Link>
-      <HomeFaq />
-    </div>
+    <>
+      <FaqJsonLd />
+      <FaqPageContent />
+    </>
   );
 }

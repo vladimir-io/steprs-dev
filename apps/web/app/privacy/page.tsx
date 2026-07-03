@@ -1,14 +1,13 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 
+import { pageMetadata } from "@/lib/seo";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Privacy",
   description: `How ${siteConfig.name} handles your data. Client-side STEP parsing with no file upload.`,
-  alternates: { canonical: absoluteUrl("/privacy") },
-  robots: { index: true, follow: true },
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

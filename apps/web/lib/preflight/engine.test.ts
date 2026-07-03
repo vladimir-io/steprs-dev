@@ -90,6 +90,7 @@ const baseConfig: PreflightConfig = {
   workholdingId: "fixture-plate-clamps",
   toolIds: ["em-flat-6.35", "drill-6.35"],
   materialId: "aluminum-6061",
+  stockAllowanceMm: 3.175,
 };
 
 function statusOf(result: ParseResult, config: PreflightConfig, rule: RuleId): CheckStatus[] {

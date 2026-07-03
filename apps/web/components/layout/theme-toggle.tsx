@@ -5,6 +5,7 @@ import { useCallback, useSyncExternalStore } from "react";
 import {
   readStoredTheme,
   resolveTheme,
+  THEME_CHANGE_EVENT,
   toggleTheme,
   type ThemeMode,
 } from "@/lib/theme";
@@ -39,8 +40,13 @@ function MoonIcon({ className }: { className?: string }) {
 
 function subscribeTheme(onStoreChange: () => void) {
   const mq = window.matchMedia("(prefers-color-scheme: dark)");
-  mq.addEventListener("change", onStoreChange);
-  return () => mq.removeEventListener("change", onStoreChange);
+  const onChange = () => onStoreChange();
+  mq.addEventListener("change", onChange);
+  window.addEventListener(THEME_CHANGE_EVENT, onChange);
+  return () => {
+    mq.removeEventListener("change", onChange);
+    window.removeEventListener(THEME_CHANGE_EVENT, onChange);
+  };
 }
 
 function getThemeSnapshot(): ThemeMode {
@@ -71,6 +77,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       className={cn("theme-toggle", className)}
       onClick={handleToggle}
       aria-label={label}
+      aria-pressed={mode === "dark"}
       title={label}
       data-mode={mode}
     >

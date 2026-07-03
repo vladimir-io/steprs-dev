@@ -3444,6 +3444,13 @@ html.dark .file-toast__panel {
 .preflight-panel__setup {
   display: grid;
   gap: 0.45rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .preflight-panel__setup {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .preflight-panel__field {
@@ -3589,6 +3596,261 @@ html.dark .file-toast__panel {
   font-size: 0.6875rem;
   line-height: 1.45;
   color: var(--color-muted);
+}
+
+.preflight-panel__slider {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+}
+
+.preflight-panel__slider input[type="range"] {
+  width: 100%;
+  accent-color: var(--color-accent, #3b82f6);
+}
+
+.preflight-panel__slider-hint,
+.preflight-panel__gcode-hint {
+  margin: 0;
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.preflight-panel__gcode-input {
+  width: 100%;
+  font-size: 0.75rem;
+}
+
+.preflight-panel__share {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.preflight-panel__share-msg {
+  margin: 0;
+  font-size: 0.6875rem;
+  color: var(--color-muted);
+  word-break: break-all;
+}
+
+.tools-workspace--shared {
+  min-height: 70vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem 3rem;
+}
+
+.shared-report-shell {
+  width: min(42rem, 100%);
+}
+
+.shared-report {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.shared-report__hero {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-panel-muted);
+}
+
+.shared-report__eyebrow {
+  margin: 0;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+}
+
+.shared-report__title {
+  margin: 0.35rem 0 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.shared-report__meta,
+.shared-report__envelope {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+.shared-report__note {
+  margin: 0;
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.badge-page {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.badge-page__title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.badge-page__lead,
+.badge-page__hint {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.badge-page__block h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.badge-page__code {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-panel-muted);
+  font-size: 0.75rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.badge-page__links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.badge-page__links li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.badge-page__param {
+  font-size: 0.6875rem;
+  color: var(--color-muted);
+}
+
+.drop-stage__trust {
+  margin: 0.75rem 0 0;
+  padding: 0 0.5rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.drop-stage__trust strong {
+  color: var(--color-fg, inherit);
+  font-weight: 600;
+}
+
+.crash-risk-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 59, 48, 0.35);
+  background: rgba(255, 59, 48, 0.06);
+}
+
+.crash-risk-card__preview,
+.machinability-badge__preview {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+}
+
+.crash-risk-card__actions,
+.machinability-badge__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.crash-risk-card__status,
+.machinability-badge__status {
+  margin: 0;
+  font-size: 0.6875rem;
+  color: var(--color-muted);
+}
+
+.machinability-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-panel-muted);
+}
+
+.machinability-badge__score {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.machinability-badge__value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.machinability-badge--clean-cut .machinability-badge__value {
+  color: #34d399;
+}
+
+.machinability-badge--shop-ready .machinability-badge__value {
+  color: #4ade80;
+}
+
+.machinability-badge--needs-review .machinability-badge__value {
+  color: #fbbf24;
+}
+
+.machinability-badge--headache .machinability-badge__value {
+  color: #fb923c;
+}
+
+.machinability-badge--nightmare-fuel .machinability-badge__value {
+  color: #f87171;
+}
+
+.machinability-badge__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.machinability-badge__card summary {
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.preflight-panel__share--crib {
+  margin-top: 0.25rem;
 }
 
 /* AAG panel — Joshi–Chang attributed adjacency graph */
@@ -4679,6 +4941,73 @@ html.dark .llm-context-copy:hover:not(:disabled) {
 
   .site-footer__links {
     text-align: center;
+  }
+}
+
+/* ── Responsive polish (mobile → wide) ─────────────────────── */
+
+.page-drop-idle__content {
+  padding-block: clamp(0.75rem, 2vh, 1.5rem);
+}
+
+@media (max-width: 640px) {
+  .landing-layout--cinematic {
+    gap: 1rem;
+  }
+
+  .landing-layout--cinematic .home-hero__title {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
+
+  .landing-layout--cinematic .workflow-rail {
+    gap: 0.25rem;
+  }
+
+  .drop-stage__trust {
+    font-size: 0.75rem;
+    padding-inline: 0.25rem;
+  }
+
+  .tools-workspace--shared {
+    padding: 1rem 0.5rem 2rem;
+  }
+
+  .shared-report-shell {
+    width: 100%;
+  }
+
+  .badge-page {
+    padding: 1.25rem 0.75rem 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .preflight-panel__field {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .preflight-panel__share,
+  .preflight-panel__share--crib {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .preflight-panel__share button,
+  .preflight-panel__share--crib button {
+    width: 100%;
+  }
+
+  .crash-risk-card__actions,
+  .machinability-badge__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .workbench__file-name {
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-word;
   }
 }
 

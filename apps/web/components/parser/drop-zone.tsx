@@ -95,13 +95,6 @@ export function DropZoneIdle({
 
   return (
     <div className="page-drop-idle__content landing-layout landing-layout--cinematic">
-      {!isDragActive && !showLoader && (
-        <div className="landing-layout__mast reveal">
-          <HomeHero />
-          <WorkflowSteps />
-        </div>
-      )}
-
       <div className="landing-layout__stage">
         <div
           className={cn(
@@ -175,6 +168,13 @@ export function DropZoneIdle({
           </div>
         </div>
 
+        {!isDragActive && !showLoader && mounted && isReady && (
+          <p className="drop-stage__trust">
+            <strong>Your files never leave your machine.</strong> 100% local Rust
+            WebAssembly.
+          </p>
+        )}
+
         {!isDragActive && !showLoader && onTrySample && (
           <SampleGallery
             onSelect={onTrySample}
@@ -183,6 +183,13 @@ export function DropZoneIdle({
           />
         )}
       </div>
+
+      {!isDragActive && !showLoader && (
+        <div className="landing-layout__mast reveal">
+          <HomeHero />
+          <WorkflowSteps />
+        </div>
+      )}
 
       {!isDragActive && !showLoader && (
         <Link

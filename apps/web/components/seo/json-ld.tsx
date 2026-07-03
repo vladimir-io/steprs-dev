@@ -60,45 +60,6 @@ export function JsonLd() {
     mainEntity: { "@id": `${siteConfig.url}/#software` },
   };
 
-  const faq = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What is STEP pre-flight?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "A quick check before CAM: units, holes, stock size, and whether the part fits your machine, vise, and tools. Runs in the browser; nothing uploads.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Does steprs.dev upload my STEP files?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. Parsing runs in a Web Worker with Rust WASM. File bytes never leave your device.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What does Pre-Flight check?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Machine travel fit, vise jaw opening, Z clearance with tool stickout, drill reach, pocket depth vs flute length, flat-bottom blind holes, undercuts, and a machinability score. Pick your machine and tool crib from built-in lists.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Is the parser open source?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `${siteConfig.license.note} Parser core (${siteConfig.license.core}) at ${siteConfig.githubUrl}.`,
-        },
-      },
-    ],
-  };
-
   return (
     <>
       <script
@@ -116,10 +77,6 @@ export function JsonLd() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webPage) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
       />
     </>
   );

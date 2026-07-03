@@ -16,6 +16,7 @@ import {
 } from "./tools";
 import { getWorkholding, type WorkholdingProfile } from "./workholding";
 import { getMaterial, recommendFeeds, type MaterialId } from "./feeds";
+import { MACHINING_ALLOWANCE_MM } from "@/lib/stock-sizer";
 
 export type CheckStatus = "pass" | "warn" | "fail" | "info";
 
@@ -44,6 +45,8 @@ export interface PreflightConfig {
   workholdingId: string;
   toolIds: string[];
   materialId: MaterialId;
+  /** Per-side stock allowance added to envelope for fit + Z-stack (mm). */
+  stockAllowanceMm: number;
 }
 
 export interface PreflightReport {
@@ -83,10 +86,14 @@ export function runPreflight(
     number,
   ];
   const [partL, partW, partH] = sorted;
+  const allow = config.stockAllowanceMm ?? MACHINING_ALLOWANCE_MM;
+  const stockL = partL + 2 * allow;
+  const stockW = partW + 2 * allow;
+  const stockH = partH + 2 * allow;
 
-  checks.push(checkEnvelopeFit(machine, partL, partW, partH));
-  checks.push(checkViseFit(workholding, partL, partW));
-  checks.push(checkZStack(machine, workholding, partH, tools));
+  checks.push(checkEnvelopeFit(machine, stockL, stockW, stockH, partL, partW, partH, allow));
+  checks.push(checkViseFit(workholding, stockL, stockW));
+  checks.push(checkZStack(machine, workholding, stockH, tools, allow));
   checks.push(...checkHoleTooling(result.quoting.holes, tools));
   checks.push(...checkPocketReach(result.quoting.pockets, tools));
   checks.push(checkFlatBottomHoles(result.quoting.holes));
@@ -123,29 +130,33 @@ function finishReport(
 
 function checkEnvelopeFit(
   machine: MachineProfile,
+  stockL: number,
+  stockW: number,
+  stockH: number,
   partL: number,
   partW: number,
   partH: number,
+  allow: number,
 ): PreflightCheck {
   const [travelL, travelW] = [machine.travelMm.x, machine.travelMm.y].sort(
     (a, b) => b - a,
   ) as [number, number];
-  const xyFits = partL <= travelL && partW <= travelW;
-  const zFits = partH <= machine.travelMm.z;
+  const xyFits = stockL <= travelL && stockW <= travelW;
+  const zFits = stockH <= machine.travelMm.z;
 
   if (xyFits && zFits) {
     return {
       rule: "envelope-fit",
       status: "pass",
-      title: "Part fits machine travel",
-      detail: `${fmt(partL)} × ${fmt(partW)} × ${fmt(partH)} mm inside ${machine.label} travels (${machine.travelMm.x} × ${machine.travelMm.y} × ${machine.travelMm.z} mm).`,
+      title: "Stock fits machine travel",
+      detail: `Billet ${fmt(stockL)} × ${fmt(stockW)} × ${fmt(stockH)} mm (+${fmt(allow)} mm/side) inside ${machine.label} travels.`,
     };
   }
   return {
     rule: "envelope-fit",
     status: "fail",
-    title: xyFits ? "Part too tall for Z travel" : "Part exceeds XY travel",
-    detail: `${fmt(partL)} × ${fmt(partW)} × ${fmt(partH)} mm vs ${machine.label} travels ${machine.travelMm.x} × ${machine.travelMm.y} × ${machine.travelMm.z} mm. Consider tiling, a flip, or a bigger machine.`,
+    title: xyFits ? "Stock too tall for Z travel" : "Stock exceeds XY travel",
+    detail: `Part ${fmt(partL)} × ${fmt(partW)} × ${fmt(partH)} mm → billet ${fmt(stockL)} × ${fmt(stockW)} × ${fmt(stockH)} mm vs ${machine.label} ${machine.travelMm.x} × ${machine.travelMm.y} × ${machine.travelMm.z} mm.`,
   };
 }
 
@@ -182,16 +193,17 @@ function checkViseFit(
 function checkZStack(
   machine: MachineProfile,
   workholding: WorkholdingProfile,
-  partH: number,
+  stockH: number,
   tools: ToolProfile[],
+  allow: number,
 ): PreflightCheck {
   const maxStickout = tools.length
     ? Math.max(...tools.map((t) => t.defaultStickoutMm))
     : 0;
-  const stack = workholding.heightMm + partH + maxStickout + HOLDER_ALLOWANCE_MM;
+  const stack = workholding.heightMm + stockH + maxStickout + HOLDER_ALLOWANCE_MM;
   const clearance = machine.zClearanceMm;
   const remaining = clearance - stack;
-  const breakdown = `vise ${fmt(workholding.heightMm)} + part ${fmt(partH)} + stickout ${fmt(maxStickout)} + holder ${HOLDER_ALLOWANCE_MM} = ${fmt(stack)} mm vs ${fmt(clearance)} mm clearance`;
+  const breakdown = `vise ${fmt(workholding.heightMm)} + billet Z ${fmt(stockH)} (+${fmt(allow)}/side) + stickout ${fmt(maxStickout)} + holder ${HOLDER_ALLOWANCE_MM} = ${fmt(stack)} mm vs ${fmt(clearance)} mm clearance`;
 
   if (remaining < 0) {
     return {

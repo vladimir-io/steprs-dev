@@ -1,6 +1,7 @@
 export type ThemeMode = "light" | "dark";
 
 export const THEME_STORAGE_KEY = "steprs.theme";
+export const THEME_CHANGE_EVENT = "steprs:theme-change";
 
 export function readStoredTheme(): ThemeMode | null {
   if (typeof window === "undefined") return null;
@@ -30,6 +31,10 @@ export function applyTheme(mode: ThemeMode) {
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) {
     meta.setAttribute("content", mode === "dark" ? "#09090b" : "#ffffff");
+  }
+
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
   }
 }
 

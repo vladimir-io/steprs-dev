@@ -34,7 +34,11 @@ import type { StepHeaderReport } from "@/lib/step-header";
 import { createParserWorker } from "@/lib/wasm";
 import type { ParseResult, WorkerOutboundMessage, ModelSnapshot } from "@steprs/ts-types";
 
+import { readShareHash, clearShareHash } from "@/lib/preflight/share-report";
+import type { SharedReportPayload } from "@/lib/preflight/share-report";
+
 import { ConvertToStep } from "./convert-to-step";
+import { SharedReportView } from "./shared-report-view";
 import { ToolsWorkbench } from "./tools-workbench";
 import { WorkspaceSkeleton } from "./workspace-skeleton";
 import {
@@ -80,12 +84,23 @@ export function ToolsWorkspace() {
     null,
   );
   const [compareError, setCompareError] = useState<string | null>(null);
+  const [sharedReport, setSharedReport] = useState<SharedReportPayload | null>(
+    null,
+  );
 
   useEffect(() => {
     if (activeTab !== "tools") {
       setHoveredToolHoleId(null);
     }
   }, [activeTab]);
+
+  useEffect(() => {
+    const payload = readShareHash();
+    if (payload) {
+      setSharedReport(payload);
+      setActiveTabState("preflight");
+    }
+  }, []);
   const [pendingEditInstruction, setPendingEditInstruction] = useState<string | null>(
     null,
   );
@@ -366,6 +381,8 @@ export function ToolsWorkspace() {
       }
 
       setUnsupportedFile(undefined);
+      setSharedReport(null);
+      clearShareHash();
 
       const validation = await validateStepFile(file);
       if (!validation.ok) {
@@ -510,6 +527,26 @@ export function ToolsWorkspace() {
     return (
       <section id="parser" data-loaded="true" className="tools-workspace">
         <WorkspaceSkeleton />
+      </section>
+    );
+  }
+
+  if (sharedReport && !showResults) {
+    return (
+      <section
+        id="parser"
+        data-loaded="true"
+        className="tools-workspace tools-workspace--shared"
+      >
+        <div className="shared-report-shell">
+          <SharedReportView
+            payload={sharedReport}
+            onCheckOwnFile={() => {
+              clearShareHash();
+              setSharedReport(null);
+            }}
+          />
+        </div>
       </section>
     );
   }

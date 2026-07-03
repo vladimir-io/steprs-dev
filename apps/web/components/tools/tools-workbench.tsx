@@ -272,7 +272,13 @@ function WorkbenchTabPanels({
     },
     {
       id: "preflight",
-      node: <PreflightPanel result={result} isParsing={isParsing} />,
+      node: (
+        <PreflightPanel
+          result={result}
+          isParsing={isParsing}
+          fileName={fileName}
+        />
+      ),
     },
     {
       id: "aag",

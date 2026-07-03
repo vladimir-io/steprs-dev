@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  const lastModified = new Date("2026-07-03");
 
   return [
     {
@@ -17,6 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
+    },
+    {
+      url: absoluteUrl("/badge"),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.5,
     },
     {
       url: absoluteUrl("/privacy"),
