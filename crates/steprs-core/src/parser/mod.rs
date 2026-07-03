@@ -434,6 +434,23 @@ mod tests {
     }
 
     #[test]
+    fn ingest_step_skips_malformed_entity_and_parses_valid_neighbors() {
+        let input = b"ISO-10303-21;\nHEADER;\nENDSEC;\nDATA;\n#1=CARTESIAN_POINT('',(0.0,0.0,0.0));\n#2=NOT_A_REAL_ENTITY(((((broken;\n#3=CARTESIAN_POINT('',(1.0,1.0,1.0));\nENDSEC;\nEND-ISO-10303-21;";
+        let (arena, parsed, _, skipped) = ingest_step(input).expect("ingest with skip");
+        assert_eq!(skipped, 1);
+        assert_eq!(parsed.len(), 2);
+        assert!(arena.get(1).is_some());
+        assert!(arena.get(3).is_some());
+    }
+
+    #[test]
+    fn ingest_step_handles_utf8_label_in_quoted_string() {
+        let input = b"ISO-10303-21;\nHEADER;\nENDSEC;\nDATA;\n#1=CARTESIAN_POINT('\xC3\xA9tiquette',(0.0,0.0,0.0));\nENDSEC;\nEND-ISO-10303-21;";
+        let (_, parsed, _, _) = ingest_step(input).expect("utf8 label bytes in STEP string");
+        assert_eq!(parsed.len(), 1);
+    }
+
+    #[test]
     fn parses_real_world_cartesian_point() {
         let input =
             b"#133=CARTESIAN_POINT('',(0.0190500000000000,0.0508000000000000,0.0508000000000000));";
