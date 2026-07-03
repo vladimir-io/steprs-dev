@@ -44,7 +44,8 @@
   },
   "product": {
     "name": "steprs.dev",
-    "tagline": "Client-side STEP CAM triage — check header, holes, stock, export AAG",
+    "tagline": "STEP pre-flight before CAM — units, holes, stock, machine & tool fit",
+    "description": "Drop a STEP file. Check units, holes, stock, and whether the part fits your machine and tools. Runs in the browser; nothing uploads.",
     "not_claimed": [
       "Full DFM audit",
       "AP242 PMI certification",

@@ -18,8 +18,9 @@ They live in a separate proprietary repository (not linked here). This split pro
 
 Public git history was rewritten with `git filter-repo --invert-paths` to
 remove every proprietary path from all commits, then force-pushed. A
-full-history private clone (`steprs-private`) was extracted first and retains
-the editor source and its development history.
+full-history private clone retains the editor source:
+
+**https://github.com/vladimir-io/steprs-private** (private)
 
 ## Before a competitive editor launch
 
