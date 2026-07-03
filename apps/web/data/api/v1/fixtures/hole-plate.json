@@ -2,7 +2,7 @@
   "api_version": "1",
   "fixture_id": "hole-plate",
   "file_name": "hole-plate.stp",
-  "label": "NIST Hole Plate",
+  "label": "NIST CTC-01 Plate",
   "generated_at": "1782192133",
   "parse": {
     "engine_version": "0.1.0",

@@ -37,7 +37,7 @@ fn main() {
         (
             "hole-plate",
             "hole-plate.stp",
-            "NIST Hole Plate",
+            "NIST CTC-01 Plate",
             "apps/web/public/fixtures/hole-plate.stp",
         ),
         (

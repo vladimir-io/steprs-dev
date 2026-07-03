@@ -14,8 +14,9 @@ export const SAMPLE_PARTS = [
     id: "hole-plate",
     path: "/fixtures/hole-plate.stp",
     fileName: "hole-plate.stp",
-    label: "NIST Hole Plate",
-    teaser: "NIST test plate with 10 standard bores for hole detection checks.",
+    label: "NIST CTC-01 Plate",
+    teaser:
+      "NIST MBE combined test case (ASME1 RD); 10 bored holes on the calibration plate.",
     tags: ["Calibration", "Bores"],
   },
   {

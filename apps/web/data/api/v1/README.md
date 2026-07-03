@@ -4,7 +4,7 @@ Generated from `apps/web/data/api/v1/fixtures/*.json` via `pnpm fixtures:api`.
 
 | Fixture | Holes | Pockets | Slots | AAG faces | Manifold edges | Concave | Full graph nodes |
 |---------|-------|---------|-------|-----------|----------------|---------|------------------|
-| hole-plate | 10 | 0 | 8 | 139 | 370 | 122 | 139 |
+| hole-plate (NIST CTC-01) | 10 | 0 | 8 | 139 | 370 | 122 | 139 |
 | mounting-plate | 26 | 4 | 8 | 61 | 153 | 40 | 61 |
 | machined-bracket | 0 | 1 | 15 | 15 | 39 | 17 | 15 |
 
