@@ -1,0 +1,80 @@
+{
+  "$comment": "CAM Pre-Flight rule regression matrix. Each case pins the WORST status the engine must emit for a rule given a fixture + shop setup. Checked in CI (test:unit). fail > warn > info > pass.",
+  "version": 1,
+  "cases": [
+    {
+      "name": "hole-plate exceeds Shapeoko 4 Standard XY travel",
+      "fixture": "hole-plate",
+      "config": {
+        "machineId": "shapeoko-4-standard",
+        "workholdingId": "fixture-plate-clamps",
+        "toolIds": ["em-flat-6.35", "drill-6.35"],
+        "materialId": "aluminum-6061"
+      },
+      "expect": {
+        "envelope-fit": "fail"
+      }
+    },
+    {
+      "name": "hole-plate fits Shapeoko XXL in XY but is too tall in Z",
+      "fixture": "hole-plate",
+      "config": {
+        "machineId": "shapeoko-4-xxl",
+        "workholdingId": "fixture-plate-clamps",
+        "toolIds": ["em-flat-6.35", "drill-6.35"],
+        "materialId": "aluminum-6061"
+      },
+      "expect": {
+        "envelope-fit": "fail"
+      }
+    },
+    {
+      "name": "mounting-plate Z-stack blows Shapeoko gantry clearance",
+      "fixture": "mounting-plate",
+      "config": {
+        "machineId": "shapeoko-4-standard",
+        "workholdingId": "smw-mod-vise-4",
+        "toolIds": ["em-flat-3.175", "em-flat-6.35", "drill-4", "drill-6.35"],
+        "materialId": "aluminum-6061"
+      },
+      "expect": {
+        "envelope-fit": "pass",
+        "z-stack": "fail",
+        "flat-bottom-holes": "warn",
+        "pocket-reach": "fail",
+        "five-axis": "fail"
+      }
+    },
+    {
+      "name": "mounting-plate on Tormach 1100MX has Z headroom",
+      "fixture": "mounting-plate",
+      "config": {
+        "machineId": "tormach-1100mx",
+        "workholdingId": "kurt-dx4",
+        "toolIds": ["em-flat-3.175", "em-flat-6.35", "drill-4", "drill-6.35"],
+        "materialId": "aluminum-6061"
+      },
+      "expect": {
+        "envelope-fit": "pass",
+        "z-stack": "pass",
+        "hole-tooling": "warn",
+        "vise-fit": "pass"
+      }
+    },
+    {
+      "name": "machined-bracket deep pocket rubs shank even with long-reach 1/4",
+      "fixture": "machined-bracket",
+      "config": {
+        "machineId": "tormach-770m",
+        "workholdingId": "kurt-dx4",
+        "toolIds": ["em-flat-6.35-lr"],
+        "materialId": "aluminum-6061"
+      },
+      "expect": {
+        "envelope-fit": "pass",
+        "pocket-reach": "fail",
+        "undercuts": "warn"
+      }
+    }
+  ]
+}

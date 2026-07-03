@@ -11,7 +11,7 @@
     "lint": "next lint",
     "typecheck": "next typegen && tsc --noEmit",
     "check": "yarn lint && yarn typecheck && yarn test:unit && yarn build",
-    "test:unit": "npx tsx --test lib/file-guardrails.test.ts lib/aag-prompt.test.ts lib/analysis/triage-progress.test.ts lib/step-header.test.ts",
+    "test:unit": "npx tsx --test lib/file-guardrails.test.ts lib/aag-prompt.test.ts lib/analysis/triage-progress.test.ts lib/step-header.test.ts lib/preflight/engine.test.ts lib/preflight/preflight.eval.test.ts",
     "test:e2e": "playwright test",
     "favicons": "node scripts/generate-favicons.mjs",
     "generate:brand-assets": "node scripts/generate-brand-assets.mjs",
