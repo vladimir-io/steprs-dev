@@ -11,6 +11,7 @@ import type { ModelSnapshot, ParseResult } from "@steprs/ts-types";
 import { AagPanel } from "./aag-panel";
 import { EditComingSoonPanel } from "./edit-coming-soon-panel";
 import { PartViewer } from "./part-viewer";
+import { PreflightPanel } from "./preflight-panel";
 import { HeaderPanel } from "./header-panel";
 import type { StepHeaderReport } from "@/lib/step-header";
 import { StockSizerPanel } from "./stock-sizer-panel";
@@ -268,6 +269,10 @@ function WorkbenchTabPanels({
       node: (
         <StockSizerPanel result={result} isParsing={isParsing} />
       ),
+    },
+    {
+      id: "preflight",
+      node: <PreflightPanel result={result} isParsing={isParsing} />,
     },
     {
       id: "aag",

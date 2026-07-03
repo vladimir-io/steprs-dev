@@ -3403,6 +3403,194 @@ html.dark .file-toast__panel {
   color: var(--color-muted);
 }
 
+/* Pre-Flight panel — machine + tool crib vs geometry */
+.preflight-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.preflight-panel__hero {
+  padding: 0.625rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-panel-muted);
+}
+
+.preflight-panel__eyebrow {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.preflight-panel__score {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-foreground);
+}
+
+.preflight-panel__score-sub {
+  font-size: 0.6875rem;
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+.preflight-panel__setup {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.preflight-panel__field {
+  display: grid;
+  grid-template-columns: minmax(5.5rem, 6.75rem) minmax(0, 1fr);
+  gap: 0.5rem 0.75rem;
+  align-items: center;
+  padding: 0.35rem 0.65rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  background: var(--color-panel-muted);
+}
+
+.preflight-panel__field > span {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.preflight-panel__field select {
+  width: 100%;
+  padding: 0.25rem 0.35rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-foreground);
+}
+
+.preflight-panel__crib {
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-panel-muted);
+}
+
+.preflight-panel__crib summary {
+  padding: 0.45rem 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  cursor: pointer;
+}
+
+.preflight-panel__crib ul {
+  margin: 0;
+  padding: 0.25rem 0.65rem 0.6rem;
+  list-style: none;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.preflight-panel__crib label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  color: var(--color-foreground);
+  cursor: pointer;
+}
+
+.preflight-panel__crib-spec {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--color-muted);
+}
+
+.preflight-panel__checks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.preflight-check {
+  padding: 0.45rem 0.65rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  background: var(--color-panel-muted);
+  border-left-width: 3px;
+}
+
+.preflight-check--pass {
+  border-left-color: var(--color-border-strong, var(--color-border));
+}
+
+.preflight-check--info {
+  border-left-color: #6ba4d8;
+}
+
+.preflight-check--warn {
+  border-left-color: #d8a04b;
+}
+
+.preflight-check--fail {
+  border-left-color: #d86b6b;
+}
+
+.preflight-check__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.preflight-check__title {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-foreground);
+}
+
+.preflight-check__state {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.preflight-check--fail .preflight-check__state {
+  color: #d86b6b;
+}
+
+.preflight-check--warn .preflight-check__state {
+  color: #d8a04b;
+}
+
+.preflight-check__detail {
+  margin: 0.2rem 0 0;
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.preflight-panel__note {
+  margin: 0;
+  padding: 0 0.25rem;
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
 /* AAG panel — Joshi–Chang attributed adjacency graph */
 .aag-panel {
   display: flex;

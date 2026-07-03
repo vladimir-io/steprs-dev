@@ -4,12 +4,19 @@ import { useCallback, useLayoutEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-export type ToolTabId = "stock" | "schema" | "tools" | "aag" | "edit";
+export type ToolTabId =
+  | "stock"
+  | "schema"
+  | "tools"
+  | "preflight"
+  | "aag"
+  | "edit";
 
 const ANALYSIS_TABS: { id: Exclude<ToolTabId, "edit">; label: string }[] = [
   { id: "schema", label: "Header" },
   { id: "tools", label: "Holes" },
   { id: "stock", label: "Stock" },
+  { id: "preflight", label: "Pre-Flight" },
   { id: "aag", label: "AAG" },
 ];
 

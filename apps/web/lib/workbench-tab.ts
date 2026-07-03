@@ -5,7 +5,14 @@ const STORAGE_KEY = "steprs.workbenchTab";
 /** First tab after drop when no stored preference — tooling is the core value. */
 export const DEFAULT_WORKBENCH_TAB: ToolTabId = "tools";
 
-const VALID_TABS: ToolTabId[] = ["schema", "tools", "stock", "aag", "edit"];
+const VALID_TABS: ToolTabId[] = [
+  "schema",
+  "tools",
+  "stock",
+  "preflight",
+  "aag",
+  "edit",
+];
 
 /** Pick the most useful first tab for a freshly parsed part. */
 export function pickWorkbenchTabForResult(result: ParseResult): ToolTabId {
