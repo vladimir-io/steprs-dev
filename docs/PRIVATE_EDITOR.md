@@ -14,10 +14,16 @@ They live in a separate proprietary repository (not linked here). This split pro
 | Edit tab UI | “Coming soon” panel only |
 | `/api/editor/*` | Always **503** with pointer to this doc |
 
+## History scrub — DONE
+
+Public git history was rewritten with `git filter-repo --invert-paths` to
+remove every proprietary path from all commits, then force-pushed. A
+full-history private clone (`steprs-private`) was extracted first and retains
+the editor source and its development history.
+
 ## Before a competitive editor launch
 
-1. Develop editor in the **private** repository.
+1. Develop editor in the **private** repository (`steprs-private`).
 2. Deploy with editor-enabled WASM and authenticated API routes.
-3. If this public repo ever contained editor source, **scrub git history** before launch (`git filter-repo` or fresh orphan root).
 
 See also [COMPETITIVE_BOUNDARY.md](./COMPETITIVE_BOUNDARY.md) and [OPEN_CORE.md](../OPEN_CORE.md).

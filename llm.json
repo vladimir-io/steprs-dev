@@ -105,7 +105,7 @@
       "crates/steprs-core/src/kernel/brepkit.rs"
     ],
     "private_repo_contains": "NL agent, EditOp planner, brepkit edit kernel, MCP tools, editor WASM (editor feature build)",
-    "history_scrub_before_launch": "Recommended if editor source was ever pushed to public remote — see docs/PRIVATE_EDITOR.md"
+    "history_scrubbed": "git filter-repo executed; proprietary paths removed from all public commits and force-pushed. Full-history private copy retained locally (steprs-private)."
   },
   "features": {
     "header_check": "STEP HEADER: AP203/AP214/AP242 hints, units, assembly byte-scan markers",
@@ -114,6 +114,7 @@
     "aag_export": "Face adjacency with concave/convex/smooth; compact graph for handoff",
     "handoff": "Facts-before-topology SteprsHandoff (apps/web/lib/api/steprs-handoff.ts)",
     "labels": "FaceLabelReport — topology-v2 rule classifier (optional)",
+    "preflight": "CAM Pre-Flight tab: machine envelope fit, vise jaw/Z-stack clearance, tool crib reach (shank/holder collision), flat-bottom blind hole flags, undercut/5-axis warnings, machinability score, SFM-based starting feeds (apps/web/lib/preflight/)",
     "editor": "Not in public repo — Coming soon UI + 503 API stubs only"
   },
   "evaluation": {
@@ -133,7 +134,9 @@
       "parse_ms_p95": 249
     },
     "ci_jobs": ["rust-wasm", "wasm-freshness", "web"],
-    "wasm_smoke": "apps/web/scripts/wasm-smoke-test.mjs — 12 strict snapshots"
+    "wasm_smoke": "apps/web/scripts/wasm-smoke-test.mjs — 12 strict snapshots",
+    "preflight_rule_matrix": "apps/web/lib/preflight/preflight-rules.eval.json — pins machine/tool/rule outcomes on real fixtures; runs in web CI (test:unit)",
+    "synthetic_suite": "scripts/synthetic/generate_synthetic_steps.py — cadquery-generated STEP files with known ground truth (truth.json) for differential parser testing"
   },
   "known_limitations": [
     "Hole metrics are B-rep geometry unless AP242 semantic PMI entities are present.",
@@ -154,7 +157,7 @@
     "risks": [
       "Heuristic holes — not PMI-verified",
       "Root package.json license field says Apache-2.0 but workbench shell is mixed — see NOTICE",
-      "Prior public git history may contain editor source until history scrub",
+      "Machine/tool/workholding profiles are catalog approximations — users must verify",
       "Handoff prompt and compactAagGraph are public by design"
     ]
   },
