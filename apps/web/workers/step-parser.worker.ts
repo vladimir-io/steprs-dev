@@ -49,6 +49,36 @@ type StepParserInstance = {
   exportEditTriplet?: (instruction: string, opsJson: string) => string;
 };
 
+type EditorStepParser = StepParserInstance & {
+  getSnapshot: () => string;
+  getParseResultWire: () => ParseWirePayload;
+  applyEdits: (opsJson: string, verifyJson?: string) => string;
+  undo: () => string;
+  redo: () => string;
+  exportStep: () => Uint8Array;
+  closeSession: () => void;
+};
+
+function requireEditorParser(id: string): EditorStepParser | null {
+  if (
+    !parser?.getSnapshot ||
+    !parser.getParseResultWire ||
+    !parser.applyEdits ||
+    !parser.undo ||
+    !parser.redo ||
+    !parser.exportStep ||
+    !parser.closeSession
+  ) {
+    post({
+      type: "error",
+      id,
+      message: "Editor session APIs are not available in this WASM build.",
+    });
+    return null;
+  }
+  return parser as EditorStepParser;
+}
+
 type WasmModule = {
   default: (input?: WebAssembly.Module | BufferSource) => Promise<void>;
   StepParser: new () => StepParserInstance;
@@ -237,8 +267,10 @@ self.onmessage = async (event: MessageEvent<WorkerInboundMessage>) => {
     }
 
     if (message.type === "editor_snapshot") {
-      const snapJson = parser!.getSnapshot();
-      const payload = assembleParseResult(parser!.getParseResultWire());
+      const editor = requireEditorParser(message.id);
+      if (!editor) return;
+      const snapJson = editor.getSnapshot();
+      const payload = assembleParseResult(editor.getParseResultWire());
       post(
         {
           type: "editor_snapshot",
@@ -252,15 +284,17 @@ self.onmessage = async (event: MessageEvent<WorkerInboundMessage>) => {
     }
 
     if (message.type === "editor_apply") {
+      const editor = requireEditorParser(message.id);
+      if (!editor) return;
       const verifyJson = message.verify
         ? JSON.stringify(message.verify)
         : undefined;
-      const editJson = parser!.applyEdits(
+      const editJson = editor.applyEdits(
         JSON.stringify(message.ops),
         verifyJson,
       );
       const editResult = JSON.parse(editJson) as EditResult;
-      const payload = assembleParseResult(parser!.getParseResultWire());
+      const payload = assembleParseResult(editor.getParseResultWire());
       post(
         {
           type: "editor_edit",
@@ -274,13 +308,15 @@ self.onmessage = async (event: MessageEvent<WorkerInboundMessage>) => {
     }
 
     if (message.type === "editor_undo") {
-      const stateJson = parser!.undo();
+      const editor = requireEditorParser(message.id);
+      if (!editor) return;
+      const stateJson = editor.undo();
       const state = JSON.parse(stateJson) as {
         snapshot: ModelSnapshot;
         can_undo: boolean;
         can_redo: boolean;
       };
-      const payload = assembleParseResult(parser!.getParseResultWire());
+      const payload = assembleParseResult(editor.getParseResultWire());
       post(
         {
           type: "editor_undo",
@@ -296,13 +332,15 @@ self.onmessage = async (event: MessageEvent<WorkerInboundMessage>) => {
     }
 
     if (message.type === "editor_redo") {
-      const stateJson = parser!.redo();
+      const editor = requireEditorParser(message.id);
+      if (!editor) return;
+      const stateJson = editor.redo();
       const state = JSON.parse(stateJson) as {
         snapshot: ModelSnapshot;
         can_undo: boolean;
         can_redo: boolean;
       };
-      const payload = assembleParseResult(parser!.getParseResultWire());
+      const payload = assembleParseResult(editor.getParseResultWire());
       post(
         {
           type: "editor_redo",
@@ -318,7 +356,9 @@ self.onmessage = async (event: MessageEvent<WorkerInboundMessage>) => {
     }
 
     if (message.type === "editor_export") {
-      const bytes = parser!.exportStep();
+      const editor = requireEditorParser(message.id);
+      if (!editor) return;
+      const bytes = editor.exportStep();
       post({
         type: "editor_export",
         id: message.id,
@@ -332,7 +372,9 @@ self.onmessage = async (event: MessageEvent<WorkerInboundMessage>) => {
     }
 
     if (message.type === "editor_close") {
-      parser!.closeSession();
+      const editor = requireEditorParser(message.id);
+      if (!editor) return;
+      editor.closeSession();
       return;
     }
   } catch (err) {

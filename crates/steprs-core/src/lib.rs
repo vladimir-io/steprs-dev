@@ -23,8 +23,6 @@
 
 pub mod arena;
 pub mod core;
-#[cfg(feature = "editor")]
-pub mod editor;
 pub mod entity;
 pub mod error;
 pub mod features;

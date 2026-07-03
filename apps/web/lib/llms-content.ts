@@ -53,9 +53,9 @@ ${siteConfig.features.map((f) => `- ${f}`).join("\n")}
 
 ${siteConfig.architecture.map((line) => `- ${line}`).join("\n")}
 
-### Roadmap (not public yet)
+### Roadmap (private repository)
 
-- **Geometry editor**: bore/scale/fillet edits with STEP export (disabled on steprs.dev until ready)
+- **Geometry editor**: bore/scale/fillet edits with STEP export — not in the public GitHub repository; Edit tab shows “Coming soon”
 
 See OPEN_CORE.md in the GitHub repository for the open-source vs proprietary split.
 
@@ -66,14 +66,14 @@ See OPEN_CORE.md in the GitHub repository for the open-source vs proprietary spl
 3. **L4 part analysis**: Units detection, bbox, surface area, stock volume, holes, fillets, pockets, slots, undercuts
 4. **L6 AAG**: Pocket/slot detection via face adjacency patterns
 5. **L7 mesh**: Triangle mesh for three.js preview (capped for WASM memory)
-6. **L8 labels**: Geometry + adjacency face classifier (`topology-v2`)
+6. **L8 labels**: Geometry + adjacency face classifier (topology-v2 engine id)
 
 ### Production defenses
 
 - **Sparse ID arena:** Pre-scan entity density before allocation; dense Vec vs sparse HashMap when max entity ID ≫ entity count
 - **Committed WASM:** Pre-built in \`public/wasm/\`; hosting runs Next.js only
 - **Worker isolation:** All parse compute off the main thread
-- **No upload path:** STEP bytes stay in the browser; editor API returns 503 in production
+- **No upload path:** STEP bytes stay in the browser; editor API returns 503 (editor not in public repo)
 
 ### Parser philosophy
 

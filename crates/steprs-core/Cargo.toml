@@ -60,37 +60,3 @@ codegen-units = 1
 
 [features]
 default = []
-editor = []
-brepkit-kernel = [
-  "editor",
-  "dep:brepkit-io",
-  "dep:brepkit-offset",
-  "dep:brepkit-topology",
-  "dep:brepkit-operations",
-  "dep:brepkit-math",
-]
-
-[dependencies.brepkit-io]
-git = "https://github.com/andymai/brepkit.git"
-package = "brepkit-io"
-optional = true
-
-[dependencies.brepkit-offset]
-git = "https://github.com/andymai/brepkit.git"
-package = "brepkit-offset"
-optional = true
-
-[dependencies.brepkit-topology]
-git = "https://github.com/andymai/brepkit.git"
-package = "brepkit-topology"
-optional = true
-
-[dependencies.brepkit-operations]
-git = "https://github.com/andymai/brepkit.git"
-package = "brepkit-operations"
-optional = true
-
-[dependencies.brepkit-math]
-git = "https://github.com/andymai/brepkit.git"
-package = "brepkit-math"
-optional = true

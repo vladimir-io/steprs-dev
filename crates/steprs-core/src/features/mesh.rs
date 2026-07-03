@@ -23,18 +23,6 @@ pub fn tessellate_mesh(ctx: &ParseContext<'_>) -> Option<TessellatedMesh> {
     })
 }
 
-#[cfg(feature = "brepkit-kernel")]
-#[allow(dead_code)]
-pub fn tessellate_mesh_brepkit(ctx: &ParseContext<'_>) -> Option<TessellatedMesh> {
-    if let Ok(text) = std::str::from_utf8(ctx.raw_bytes) {
-        if let Ok(mut mesh) = crate::kernel::tessellate_step_preview(text, ctx.scale_to_mm) {
-            mesh.mesh_engine = "brepkit".into();
-            return Some(mesh);
-        }
-    }
-    tessellate_mesh(ctx)
-}
-
 fn tessellate_mesh_fan(ctx: &ParseContext<'_>) -> Option<TessellatedMesh> {
     let scale = ctx.scale_to_mm;
     let mut positions = Vec::new();

@@ -38,14 +38,6 @@ jobs:
       - name: cargo clippy (WASM path)
         run: cargo clippy --manifest-path crates/steprs-core/Cargo.toml --no-default-features -- -D warnings
 
-  rust-brepkit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-      - name: Unit and integration tests (editor / brepkit path)
-        run: cargo test --manifest-path crates/steprs-core/Cargo.toml --lib --tests --features brepkit-kernel
-
   wasm-freshness:
     runs-on: ubuntu-latest
     steps:
@@ -81,7 +73,6 @@ jobs:
       - run: yarn workspace @steprs/web lint
       - run: yarn workspace @steprs/web typecheck
       - run: yarn workspace @steprs/web test:unit
-      - run: yarn workspace @steprs/web test:editor
       - run: yarn workspace @steprs/web build
       - name: Install Playwright browsers
         run: yarn workspace @steprs/web exec playwright install chromium --with-deps

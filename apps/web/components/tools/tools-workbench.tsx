@@ -4,7 +4,6 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from "react"
 
 import { productFlags } from "@/lib/product-flags";
 
-import { EditorPanel } from "@/components/editor/editor-panel";
 import { ParseProgress } from "@/components/parser/parse-progress";
 import { cn } from "@/lib/utils";
 import type { ModelSnapshot, ParseResult } from "@steprs/ts-types";
@@ -278,24 +277,7 @@ function WorkbenchTabPanels({
     },
     {
       id: "edit",
-      node:
-        editEnabled && editorSnapshot && result ? (
-          <EditorPanel
-            worker={worker}
-            snapshot={editorSnapshot}
-            parseResult={result}
-            fileName={fileName}
-            selectedFaceIds={selectedFaceIds}
-            pendingInstruction={pendingEditInstruction}
-            onPendingInstructionConsumed={onPendingInstructionConsumed}
-            onSelectionChange={onSelectionChange}
-            onSnapshotChange={onSnapshotChange}
-            onError={onError}
-            embedded
-          />
-        ) : (
-          <EditComingSoonPanel />
-        ),
+      node: <EditComingSoonPanel />,
     },
   ];
 

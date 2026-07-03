@@ -16,7 +16,6 @@
     "fixtures:api": "cargo run --example dump_fixture_handoff --manifest-path crates/steprs-core/Cargo.toml",
     "lint": "turbo lint",
     "test": "cargo test --manifest-path crates/steprs-core/Cargo.toml --no-default-features && cargo test --manifest-path crates/steprs-core/Cargo.toml --test golden_suite --no-default-features",
-    "test:kernel": "cargo test --manifest-path crates/steprs-core/Cargo.toml --features brepkit-kernel",
     "lint:rust": "cargo clippy --manifest-path crates/steprs-core/Cargo.toml -- -D warnings",
     "test:downloads": "cargo run --example batch_parse --manifest-path crates/steprs-core/Cargo.toml -- ~/Downloads"
   },
