@@ -7,7 +7,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="site-footer__inner">
         <p className="site-footer__meta">
-          steprs.dev · open-core WASM · v{siteConfig.engineVersion}
+          steprs.dev · local STEP pre-flight · v{siteConfig.engineVersion}
         </p>
         <nav className="site-footer__links" aria-label="Site links">
           <Link href="/faq">FAQ</Link>

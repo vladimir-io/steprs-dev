@@ -20,8 +20,9 @@ export function pickWorkbenchTabForResult(result: ParseResult): ToolTabId {
   if (!q) return "schema";
 
   if (q.units.confidence < 0.6) return "schema";
-  if (q.holes.length > 0) return "tools";
-  if (q.slots.length > 0 || q.pockets.length > 0) return "tools";
+  if (q.holes.length > 0 || q.pockets.length > 0 || q.slots.length > 0) {
+    return "preflight";
+  }
   return "stock";
 }
 

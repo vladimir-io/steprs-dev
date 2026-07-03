@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
 
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     id: "/",
-    name: `${siteConfig.name} | ${siteConfig.tagline}`,
-    short_name: siteConfig.name,
+    name: siteConfig.title,
+    short_name: "steprs",
     description: siteConfig.description,
     start_url: "/",
     scope: "/",
@@ -15,7 +15,7 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: "#f5f5f7",
     theme_color: "#f5f5f7",
     lang: "en",
-    categories: ["developer tools", "productivity", "utilities"],
+    categories: ["productivity", "utilities", "business"],
     icons: [
       {
         src: "/favicon-192x192.png",

@@ -72,7 +72,7 @@ export function PreflightPanel({ result, isParsing }: PreflightPanelProps) {
     <div className="preflight-panel">
       <div className="preflight-panel__hero">
         <p className="preflight-panel__eyebrow">
-          CAM pre-flight · machine + vise + tool crib vs part geometry
+          Pick machine, vise, tools — see what fails before CAM
         </p>
         {report && (
           <p className="preflight-panel__score" data-testid="preflight-score">
@@ -163,9 +163,8 @@ export function PreflightPanel({ result, isParsing }: PreflightPanelProps) {
       </ul>
 
       <p className="preflight-panel__note">
-        Machine travels and tool dimensions are catalog approximations — verify
-        against your own hardware. Geometry heuristics, not a toolpath
-        simulation; final check happens in CAM.
+        Catalog dimensions — check against your actual machine and tools. Not a
+        simulation; verify in CAM.
       </p>
     </div>
   );

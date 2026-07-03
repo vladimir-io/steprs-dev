@@ -55,7 +55,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} | Check STEP files before CAM`,
+        alt: `${siteConfig.name} | STEP pre-flight before CAM`,
       },
     ],
   },

@@ -2,24 +2,24 @@ import { absoluteUrl, siteConfig } from "@/lib/site";
 
 const faqs = [
   {
-    q: "Can I use steprs with proprietary parts under an NDA?",
-    a: "Yes. Your STEP never uploads. The AAG handoff exports hole sizes, envelope, and adjacency without mesh or XYZ coordinates. Review before sharing outside your shop.",
+    q: "What is STEP pre-flight?",
+    a: "A quick check before you open CAM: units, hole list, stock size, and whether the part fits your machine travel, vise, and the tools you own. Not a toolpath simulation — just the obvious problems caught early.",
   },
   {
-    q: "Does steprs.dev upload my STEP files?",
-    a: "No. Parsing runs in a Web Worker with Rust WASM. File bytes never leave your device.",
+    q: "Does steprs upload my files?",
+    a: "No. Parsing runs in your browser. The STEP never leaves your machine.",
   },
   {
-    q: "What can I inspect before CAM?",
-    a: "STEP header (AP protocol, units, assembly), hole diameters with nearest catalog drill/endmill, stock envelope, and optional AAG topology export. All local.",
+    q: "Which machines are in the Pre-Flight list?",
+    a: "Shapeoko, Onefinity, Nomad, Tormach, Langmuir MR-1, Haas Mini Mill, and a few others. Pick yours, pick your vise, check the tools you have. Catalog dimensions — verify against your actual hardware.",
+  },
+  {
+    q: "Can I use this on NDA parts?",
+    a: "Yes. Nothing uploads. The export handoff is hole sizes, envelope, and topology — no mesh or coordinates.",
   },
   {
     q: "Is the parser open source?",
-    a: `${siteConfig.license.note} Core parser: ${siteConfig.license.core} on GitHub.`,
-  },
-  {
-    q: "Is there machine-readable documentation?",
-    a: `Yes — ${absoluteUrl("/llms.txt")} (summary) and ${absoluteUrl("/llms-full.txt")} (pipeline and API notes) for tools and crawlers.`,
+    a: `${siteConfig.license.note} Core: ${siteConfig.license.core} at ${siteConfig.githubUrl}.`,
   },
 ] as const;
 

@@ -30,17 +30,16 @@ export function LlmHandoffStrip({
       <div className="llm-handoff-strip__copy">
         <p className="llm-handoff-strip__eyebrow">Export</p>
         <h2 id="llm-handoff-strip-title" className="llm-handoff-strip__title">
-          Copy machining facts without the STEP file
+          Copy hole list and envelope
         </h2>
         <p className="llm-handoff-strip__body">
-          Hole sizes, stock envelope, and a Joshi–Chang adjacency graph. Topology
-          without coordinates cannot rebuild the solid.
+          Hole sizes, stock envelope, face adjacency. No coordinates.
         </p>
         <ul className="llm-handoff-strip__facts" aria-label="Handoff contents">
-          {holes > 0 && <li>{holes} hole{holes === 1 ? "" : "s"} sized for tooling</li>}
+          {holes > 0 && <li>{holes} hole{holes === 1 ? "" : "s"}</li>}
           {faces > 0 && <li>{faces} face{faces === 1 ? "" : "s"} in graph</li>}
-          {edges > 0 && <li>{edges} classified concave/convex edges</li>}
-          <li>Envelope, units, and setup hints</li>
+          {edges > 0 && <li>{edges} concave/convex edges</li>}
+          <li>Units and setup hints</li>
         </ul>
       </div>
       <div className="llm-handoff-strip__action">
@@ -51,7 +50,7 @@ export function LlmHandoffStrip({
           onCopied={onCopied}
         />
         <p className="llm-handoff-strip__hint">
-          Paste into your job notes or CAM planning doc.
+          Paste into job notes or your CAM planning doc.
         </p>
       </div>
     </section>
@@ -62,22 +61,12 @@ export function LlmHandoffLandingPromo() {
   return (
     <section className="llm-handoff-promo" aria-labelledby="llm-handoff-promo-title">
       <h2 id="llm-handoff-promo-title" className="llm-handoff-promo__title">
-        STEP checks with optional AAG export
+        Export hole list and envelope
       </h2>
       <p className="llm-handoff-promo__body">
-        Drop a STEP file for header, holes, and stock envelope. The AAG export is
-        topology and numbers only.
+        Copy machining facts for job notes. Topology only — no coordinates to
+        rebuild the solid.
       </p>
-      <ul className="llm-handoff-promo__list">
-        <li>
-          <strong>No coordinates.</strong> Graph exports adjacency and counts,
-          not mesh or XYZ to rebuild the solid.
-        </li>
-        <li>
-          <strong>One click.</strong> Copy a prompt and facts for review or an
-          external assistant.
-        </li>
-      </ul>
     </section>
   );
 }

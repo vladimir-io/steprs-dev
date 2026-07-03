@@ -1,8 +1,8 @@
 const CAPABILITIES = [
-  { id: "stock", label: "Stock", detail: "Billet for material buy" },
-  { id: "tools", label: "Holes", detail: "Nearest catalog drills" },
-  { id: "schema", label: "Header", detail: "AP, units, assembly" },
-  { id: "aag", label: "AAG", detail: "Topology export" },
+  { id: "preflight", label: "Pre-Flight", detail: "Machine + tool fit" },
+  { id: "tools", label: "Holes", detail: "Drill list" },
+  { id: "stock", label: "Stock", detail: "Billet size" },
+  { id: "schema", label: "Header", detail: "Units, AP" },
 ] as const;
 
 export function PlatformStrip() {

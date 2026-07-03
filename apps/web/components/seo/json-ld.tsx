@@ -17,8 +17,8 @@ export function JsonLd() {
     "@type": "SoftwareApplication",
     "@id": `${siteConfig.url}/#software`,
     name: siteConfig.name,
-    applicationCategory: "DeveloperApplication",
-    applicationSubCategory: "CAD Parser",
+    applicationCategory: "BusinessApplication",
+    applicationSubCategory: "CNC Machining",
     operatingSystem: "Web Browser",
     url: siteConfig.url,
     description: siteConfig.description,
@@ -66,42 +66,34 @@ export function JsonLd() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "Does steprs.dev upload my STEP files to a server?",
+        name: "What is STEP pre-flight?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. Parsing runs entirely in your browser via a Web Worker and Rust WASM. File bytes never leave your device.",
+          text: "A quick check before CAM: units, holes, stock size, and whether the part fits your machine, vise, and tools. Runs in the browser; nothing uploads.",
         },
       },
       {
         "@type": "Question",
-        name: "What does steprs.dev extract from a STEP file?",
+        name: "Does steprs.dev upload my STEP files?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Header check (AP protocol, units, assembly from the STEP header), hole list (cylindrical features with nearest catalog drill or endmill), and stock sizer (axis-aligned envelope to billet with allowance). All processing runs client-side in WebAssembly.",
+          text: "No. Parsing runs in a Web Worker with Rust WASM. File bytes never leave your device.",
         },
       },
       {
         "@type": "Question",
-        name: "How does client-side parsing work?",
+        name: "What does Pre-Flight check?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: siteConfig.architecture.join(". "),
+          text: "Machine travel fit, vise jaw opening, Z clearance with tool stickout, drill reach, pocket depth vs flute length, flat-bottom blind holes, undercuts, and a machinability score. Pick your machine and tool crib from built-in lists.",
         },
       },
       {
         "@type": "Question",
-        name: "Is steprs.dev open source?",
+        name: "Is the parser open source?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: `${siteConfig.license.note} The Rust parser core (${siteConfig.license.core}) is on GitHub at ${siteConfig.githubUrl}.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Is there machine-readable documentation?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `See ${absoluteUrl("/llms.txt")} for a short summary and ${absoluteUrl("/llms-full.txt")} for pipeline and API notes.`,
+          text: `${siteConfig.license.note} Parser core (${siteConfig.license.core}) at ${siteConfig.githubUrl}.`,
         },
       },
     ],

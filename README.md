@@ -1,6 +1,8 @@
 # steprs.dev
 
-Client-side ISO 10303 STEP parsing with a Rust WASM engine.
+**STEP pre-flight before CAM** — drop a file, check units, holes, stock, and machine/tool fit. Runs in your browser; nothing uploads.
+
+Open-core Rust WASM parser ([Apache-2.0](./LICENSE)).
 
 ## Architecture
 
@@ -16,7 +18,7 @@ pipeline::run_pipeline
   L7     mesh::tessellate_mesh (optional)
   L8     labels::classify_face_labels (topology-based face labels, engine topology-v2)
     ↓ JSON ParseResult
-UI workbench (Header · Holes · Stock · AAG)
+UI workbench (Header · Holes · Stock · Pre-Flight · AAG)
 ```
 
 OCCT preview mesh is display-only. Hole counts, stock envelope, and AAG export come from the Rust WASM parser.

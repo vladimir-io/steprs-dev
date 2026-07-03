@@ -8,28 +8,24 @@ export function buildLlmsTxt(): string {
 
 > ${siteConfig.description}
 
-${siteConfig.name} is an **open-core** STEP (ISO 10303) check workbench: the Rust WASM parser core is Apache-2.0 and runs locally in your browser (Web Worker). Files never leave your device. Hosted editor and cloud APIs are proprietary.
+${siteConfig.name} is a browser-based STEP (ISO 10303) pre-flight tool for CNC. Drop a file to check the header, list holes, size stock, and run machine/tool fit checks against your shop setup. The Rust WASM parser core is Apache-2.0; files never upload.
 
 ## Core pages
 
-- [Home: live tools](${url}/): Header check, hole list, stock sizer, and AAG export for STEP files
-- [Workbench](${url}/#parser): Drop a STEP file or try example parts (NIST CTC-01 plate, mounting plate, machined bracket)
+- [Home: live tools](${url}/): Pre-Flight, header, holes, stock, AAG export
+- [Workbench](${url}/#parser): Drop a STEP or try sample parts (NIST CTC-01 plate, mounting plate, bracket)
+- [FAQ](${url}/faq): Privacy, machines, open source
 
 ## Documentation
 
-- [llms-full.txt](${url}/llms-full.txt): Extended product, pipeline, WASM API, and **HTTP API v1** summary
-- [API v1 index](${url}/api/v1): Example fixture handoffs (no upload)
-- [GitHub: open-core parser](${siteConfig.githubUrl})
+- [llms-full.txt](${url}/llms-full.txt): Pipeline, WASM API, HTTP API v1
+- [API v1](${url}/api/v1): Example fixture handoffs (no upload)
+- [GitHub](${siteConfig.githubUrl}): Open-core parser
 
 ## Technical
 
-- [robots.txt](${url}/robots.txt): Crawler rules and sitemap reference
-- [sitemap.xml](${url}/sitemap.xml): Site index
-- [Web app manifest](${url}/manifest.webmanifest): PWA metadata
-
-## Optional
-
-- [WASM bundle](${url}/wasm/steprs_core.js): Pre-built parser glue (for developers, not marketing content)
+- [robots.txt](${url}/robots.txt)
+- [sitemap.xml](${url}/sitemap.xml)
 `;
 }
 
@@ -43,90 +39,52 @@ export function buildLlmsFullTxt(): string {
 
 ## Product summary
 
-${siteConfig.name} targets machinists and engineers who need to trust STEP files before CAM: verifying units, inspecting holes, and sizing stock, without uploading proprietary CAD to a cloud API. The product ships as a Next.js 15 web app with an open-core Rust WASM parser (\`steprs-core\`, Apache-2.0).
+${siteConfig.name} is for machinists and hobby CNC users who want a fast answer to "can I make this?" before opening Fusion, Mastercam, or Carbide Create. Client-side Rust WASM parser (Apache-2.0). No cloud upload.
 
-### Capabilities (public)
+### Capabilities
 
 ${siteConfig.features.map((f) => `- ${f}`).join("\n")}
 
-### Architecture (reliable client-side system)
+### How it works
 
 ${siteConfig.architecture.map((line) => `- ${line}`).join("\n")}
 
-### Roadmap (private repository)
+### Pre-Flight rules (client-side)
 
-- **Geometry editor**: bore/scale/fillet edits with STEP export — not in the public GitHub repository; Edit tab shows “Coming soon”
+Machine travel fit, vise jaw opening, Z-stack clearance (vise + part + tool stickout), drill reach vs bore depth, pocket depth vs flute length (shank collision), flat-bottom blind hole flags, undercut/5-axis warnings, machinability score, starting RPM/feed from SFM baselines.
 
-See OPEN_CORE.md in the GitHub repository for the open-source vs proprietary split.
+### Engine pipeline
 
-### Engine pipeline (single forward pass)
+1. **Ingest**: DATA scan, entity parse, adaptive arena
+2. **Topology**: Face IR + edge adjacency
+3. **Part analysis**: Units, envelope, holes, pockets, slots, undercuts
+4. **AAG**: Joshi–Chang concave/convex classification
+5. **Mesh**: Fan triangulation for preview (capped)
 
-1. **L0+L1 ingest**: Single DATA-section scan → prescan density → adaptive arena → nom entity parse
-2. **L3 topology**: Face records + edge-indexed adjacency graph (petgraph), built once per parse
-3. **L4 part analysis**: Units detection, bbox, surface area, stock volume, holes, fillets, pockets, slots, undercuts
-4. **L6 AAG**: Pocket/slot detection via face adjacency patterns
-5. **L7 mesh**: Triangle mesh for three.js preview (capped for WASM memory)
-6. **L8 labels**: Geometry + adjacency face classifier (topology-v2 engine id)
-
-### Production defenses
-
-- **Sparse ID arena:** Pre-scan entity density before allocation; dense Vec vs sparse HashMap when max entity ID ≫ entity count
-- **Committed WASM:** Pre-built in \`public/wasm/\`; hosting runs Next.js only
-- **Worker isolation:** All parse compute off the main thread
-- **No upload path:** STEP bytes stay in the browser; editor API returns 503 (editor not in public repo)
-
-### Parser philosophy
-
-Custom nom byte parser over \`&[u8]\`. ruststep is schema reference only, not a runtime dependency. Recursive EXPRESS tree parsing rejected for streaming WASM suitability.
-
-### WASM API (browser)
+### WASM API
 
 \`\`\`javascript
 const parser = new StepParser();
-parser.setProgressHandler((stage) => console.log(stage));
-parser.parse(bytes);              // full pipeline
-parser.parseQuotingOnly(bytes);     // skip mesh + labels
+parser.parse(bytes);
+parser.parseQuotingOnly(bytes);
 parser.cancel();
 \`\`\`
 
-### HTTP API v1 (example fixtures, no upload)
-
-Discover at \`${url}/api/v1\`. OpenAPI: \`${url}/api/v1/openapi.json\`.
+### HTTP API v1 (example fixtures only)
 
 | Endpoint | Returns |
 |----------|---------|
-| \`GET /api/v1/fixtures\` | Catalog (hole-plate, mounting-plate, machined-bracket) |
-| \`GET /api/v1/fixtures/{id}\` | Summary: holes, pockets, AAG stats |
-| \`GET /api/v1/fixtures/{id}/handoff\` | **SteprsHandoff**: machining facts + compact AAG + LLM prompt |
-| \`GET /api/v1/fixtures/{id}/handoff?view=full\` | Full graph (larger) |
-| \`GET /api/v1/fixtures/{id}/aag\` | AAG graph JSON only |
-
-Handoff philosophy: **facts before topology**. Every response includes hole counts, envelope, setups, and surface histogram before the adjacency graph.
-
-\`\`\`bash
-curl -s ${url}/api/v1/fixtures/hole-plate/handoff | jq '.summary.holes'
-curl -s -H 'Accept: text/plain' ${url}/api/v1/fixtures/mounting-plate/handoff
-\`\`\`
-
-Client SDK (web): \`import { steprs } from "@/lib/api/steprs-client"\` → \`steprs.fixtures.handoff("hole-plate")\`.
-
-Regenerate snapshots: \`pnpm fixtures:api\` (Rust dump → \`apps/web/data/api/v1/fixtures/*.json\`).
+| GET /api/v1/fixtures | Catalog |
+| GET /api/v1/fixtures/{id}/handoff | Machining facts + compact AAG |
 
 ### Keywords
 
 ${siteConfig.keywords.join(", ")}
 
-### Canonical URL
-
-${url}
-
 ### Links
 
-- Home: ${url}/
-- Workbench: ${url}/#parser
-- llms.txt: ${url}/llms.txt
-- sitemap: ${url}/sitemap.xml
-- robots: ${url}/robots.txt
-- GitHub: ${siteConfig.githubUrl}
+- ${url}/
+- ${url}/faq
+- ${siteConfig.githubUrl}
 `;
 }

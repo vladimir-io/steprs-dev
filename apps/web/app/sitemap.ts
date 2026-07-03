@@ -13,6 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: absoluteUrl("/faq"),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: absoluteUrl("/privacy"),
       lastModified,
       changeFrequency: "monthly",
