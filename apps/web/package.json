@@ -1,0 +1,53 @@
+{
+  "name": "@steprs/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "dev:clean": "sh -c 'for p in 3000 3001; do lsof -ti :$p 2>/dev/null | xargs kill -9 2>/dev/null; done; rm -rf .next && next dev --turbopack'",
+    "clean": "rm -rf .next",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "check": "yarn lint && yarn typecheck && yarn test:unit && yarn test:editor && yarn build",
+    "test:unit": "npx tsx --test lib/file-guardrails.test.ts lib/aag-prompt.test.ts lib/analysis/triage-progress.test.ts",
+    "test:editor": "npx tsx --test lib/editor/agent.test.ts lib/editor/intent-planner.test.ts",
+    "test:e2e": "playwright test",
+    "favicons": "node scripts/generate-favicons.mjs",
+    "generate:brand-assets": "node scripts/generate-brand-assets.mjs",
+    "sync:occt": "node scripts/sync-occt-assets.mjs",
+    "postinstall": "node scripts/sync-occt-assets.mjs"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.4.4",
+    "@react-three/fiber": "^9.2.0",
+    "@steprs/ts-types": "workspace:*",
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.525.0",
+    "motion": "^12.23.0",
+    "next": "^15.3.4",
+    "occt-import-js": "^0.0.23",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-dropzone": "^14.3.8",
+    "tailwind-merge": "^3.3.1",
+    "three": "^0.178.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.53.1",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/node": "^22.15.32",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@types/three": "^0.178.0",
+    "eslint": "^9.29.0",
+    "eslint-config-next": "^15.3.4",
+    "playwright": "^1.53.1",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.8.3"
+  }
+}

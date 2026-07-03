@@ -1,0 +1,288 @@
+[
+  {
+    "id": 477,
+    "kind": "countersink",
+    "radius_mm": 2.58,
+    "diameter_mm": 5.16,
+    "origin": {
+      "x": 12.0,
+      "y": 12.0,
+      "z": -1.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "depth_mm": 21.0,
+    "face_ids": [
+      465
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 494,
+    "kind": "countersink",
+    "radius_mm": 2.78,
+    "diameter_mm": 5.56,
+    "origin": {
+      "x": 28.0,
+      "y": 12.0,
+      "z": -1.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "depth_mm": 21.0,
+    "face_ids": [
+      482
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 579,
+    "kind": "countersink",
+    "radius_mm": 3.175,
+    "diameter_mm": 6.35,
+    "origin": {
+      "x": 62.0,
+      "y": 12.0,
+      "z": -1.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "depth_mm": 21.0,
+    "face_ids": [
+      567
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 629,
+    "kind": "countersink",
+    "radius_mm": 3.5,
+    "diameter_mm": 7.0,
+    "origin": {
+      "x": 94.0,
+      "y": 12.0,
+      "z": 17.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "depth_mm": 3.0,
+    "face_ids": [
+      609
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 792,
+    "kind": "countersink",
+    "radius_mm": 2.58,
+    "diameter_mm": 5.16,
+    "origin": {
+      "x": 12.0,
+      "y": 52.0,
+      "z": -1.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "depth_mm": 21.0,
+    "face_ids": [
+      780
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 817,
+    "kind": "countersink",
+    "radius_mm": 2.5,
+    "diameter_mm": 5.0,
+    "origin": {
+      "x": 72.0,
+      "y": 37.0,
+      "z": 10.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.5,
+      "z": 0.866025403784
+    },
+    "depth_mm": 12.990381056766935,
+    "face_ids": [
+      797
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 834,
+    "kind": "countersink",
+    "radius_mm": 3.0,
+    "diameter_mm": 6.0,
+    "origin": {
+      "x": 88.0,
+      "y": 37.0,
+      "z": -1.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "depth_mm": 21.0,
+    "face_ids": [
+      822
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 859,
+    "kind": "countersink",
+    "radius_mm": 2.75,
+    "diameter_mm": 5.5,
+    "origin": {
+      "x": 104.0,
+      "y": 37.0,
+      "z": 12.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "depth_mm": 8.0,
+    "face_ids": [
+      839
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 884,
+    "kind": "countersink",
+    "radius_mm": 4.0,
+    "diameter_mm": 8.0,
+    "origin": {
+      "x": 78.0,
+      "y": 12.0,
+      "z": -1.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "depth_mm": 3.0,
+    "face_ids": [
+      864
+    ],
+    "instance_count": 2,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 909,
+    "kind": "blind_flat",
+    "radius_mm": 3.25,
+    "diameter_mm": 6.5,
+    "origin": {
+      "x": 28.0,
+      "y": 36.0,
+      "z": -1.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "depth_mm": 2.5,
+    "face_ids": [
+      889
+    ],
+    "instance_count": 2,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 1039,
+    "kind": "countersink",
+    "radius_mm": 1.75,
+    "diameter_mm": 3.5,
+    "origin": {
+      "x": 94.0,
+      "y": 12.0,
+      "z": 10.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "depth_mm": 7.0,
+    "face_ids": [
+      1019
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 1064,
+    "kind": "countersink",
+    "radius_mm": 2.0,
+    "diameter_mm": 4.0,
+    "origin": {
+      "x": 12.0,
+      "y": 36.0,
+      "z": 11.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "depth_mm": 6.124078981947001,
+    "face_ids": [
+      1044
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 1089,
+    "kind": "countersink",
+    "radius_mm": 2.25,
+    "diameter_mm": 4.5,
+    "origin": {
+      "x": 55.0,
+      "y": 37.0,
+      "z": 18.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "depth_mm": 8.0,
+    "face_ids": [
+      1069
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  }
+]

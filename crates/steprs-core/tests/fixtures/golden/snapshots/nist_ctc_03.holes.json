@@ -1,0 +1,46 @@
+[
+  {
+    "id": 129,
+    "kind": "blind_flat",
+    "radius_mm": 1.0,
+    "diameter_mm": 2.0,
+    "origin": {
+      "x": -5.981,
+      "y": 14.052,
+      "z": -1.9249
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "depth_mm": 0.07509999999999994,
+    "face_ids": [
+      301
+    ],
+    "instance_count": 2,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 135,
+    "kind": "blind_flat",
+    "radius_mm": 0.532500000000001,
+    "diameter_mm": 1.065000000000002,
+    "origin": {
+      "x": 4.73597586250298,
+      "y": 9.631,
+      "z": 2.02066826102027
+    },
+    "axis": {
+      "x": -0.707106781186547,
+      "y": 0.0,
+      "z": 0.707106781186548
+    },
+    "depth_mm": 0.07563292389743381,
+    "face_ids": [
+      307
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  }
+]

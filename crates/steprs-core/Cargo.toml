@@ -1,0 +1,96 @@
+[package]
+name = "steprs-core"
+version = "0.1.0"
+edition = "2021"
+description = "Client-side ISO 10303 STEP parser with adaptive arena for WASM"
+license = "Apache-2.0"
+repository = "https://github.com/vladimir-io/steprs-dev"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[[example]]
+name = "parse_step"
+path = "examples/parse_step.rs"
+
+[[example]]
+name = "batch_parse"
+path = "examples/batch_parse.rs"
+
+[[example]]
+name = "nist_htc_calibrate"
+path = "examples/nist_htc_calibrate.rs"
+
+[[example]]
+name = "golden_calibrate"
+path = "examples/golden_calibrate.rs"
+
+[[example]]
+name = "golden_inspect"
+path = "examples/golden_inspect.rs"
+
+[[example]]
+name = "generate_schema"
+path = "examples/generate_schema.rs"
+
+[[example]]
+name = "golden_report"
+path = "examples/golden_report.rs"
+
+[dependencies]
+nom = "7.1"
+wasm-bindgen = "0.2"
+console_error_panic_hook = "0.1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+js-sys = "0.3"
+petgraph = { version = "0.7", default-features = false }
+thiserror = "2.0"
+schemars = { version = "0.8", features = ["derive"] }
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+[features]
+default = []
+editor = []
+brepkit-kernel = [
+  "editor",
+  "dep:brepkit-io",
+  "dep:brepkit-offset",
+  "dep:brepkit-topology",
+  "dep:brepkit-operations",
+  "dep:brepkit-math",
+]
+
+[dependencies.brepkit-io]
+git = "https://github.com/andymai/brepkit.git"
+package = "brepkit-io"
+optional = true
+
+[dependencies.brepkit-offset]
+git = "https://github.com/andymai/brepkit.git"
+package = "brepkit-offset"
+optional = true
+
+[dependencies.brepkit-topology]
+git = "https://github.com/andymai/brepkit.git"
+package = "brepkit-topology"
+optional = true
+
+[dependencies.brepkit-operations]
+git = "https://github.com/andymai/brepkit.git"
+package = "brepkit-operations"
+optional = true
+
+[dependencies.brepkit-math]
+git = "https://github.com/andymai/brepkit.git"
+package = "brepkit-math"
+optional = true

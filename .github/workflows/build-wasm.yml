@@ -1,0 +1,31 @@
+name: Build WASM
+
+on:
+  push:
+    paths:
+      - "crates/steprs-core/**"
+  pull_request:
+    paths:
+      - "crates/steprs-core/**"
+  workflow_dispatch:
+
+jobs:
+  build-wasm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+      - name: Build WASM
+        run: wasm-pack build crates/steprs-core --target web --out-dir ../../apps/web/public/wasm -- --no-default-features && rm -f apps/web/public/wasm/.gitignore
+
+      - name: Upload WASM artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: wasm-build
+          path: apps/web/public/wasm/

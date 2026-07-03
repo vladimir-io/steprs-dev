@@ -1,0 +1,201 @@
+{
+  "schema": "steprs.golden/v1",
+  "gates": {
+    "strict_precision_min": 0.95,
+    "strict_recall_min": 0.95,
+    "parse_budget_ms": 30000
+  },
+  "known_limitations": [
+    "Hole metrics are B-rep geometry unless AP242 semantic PMI entities are present.",
+    "FTC-08/09/11 may report zero holes when bore rims fail confirmation.",
+    "Partial-arc holes (<180°) and sketch-extrude cuts may be missed or misclassified.",
+    "HTC geometry is FreeCAD-authored (scripts/build-htc-geometry.sh), not the official NIST native solid.",
+    "FreeCAD through-cuts may classify as countersink when conical face caps are present."
+  ],
+  "htc_ap242": {
+    "path": "tests/fixtures/nist_htc/nist_htc_geometry.stp",
+    "fixture_id": "htc_freecad_geometry",
+    "status": "required",
+    "geometry_detection": {
+      "total_holes_min": 12,
+      "total_holes_max": 14,
+      "through_min": 0,
+      "blind_min": 1,
+      "unique_diameter_count_min": 10
+    }
+  },
+  "fixtures": [
+    {
+      "id": "nist_ftc_06",
+      "path": "tests/fixtures/nist/ftc/nist_ftc_06_asme1_rd.stp",
+      "tier": "strict",
+      "parse_budget_ms": 8000,
+      "units": { "detected_unit": "millimetre", "scale_to_mm": 1 },
+      "bbox": { "x_mm": 12.0, "y_mm": 3.85, "z_mm": 10.0, "tolerance_mm": 2.0 },
+      "aag": { "concave_edge_count_min": 92, "convex_edge_count_min": 154, "manifold_edge_count_min": 310 },
+      "holes": {
+        "total": 6,
+        "through": 4,
+        "blind_flat": 2,
+        "blind_drill_point": 0,
+        "unique_diameters_mm": [0.81, 1.25, 1.75],
+        "min_depth_mm": 0.1
+      }
+    },
+    {
+      "id": "benchy",
+      "path": "../../apps/web/public/fixtures/benchy.stp",
+      "tier": "strict",
+      "parse_budget_ms": 15000,
+      "units": { "detected_unit": "millimetre", "scale_to_mm": 1 },
+      "bbox": { "x_mm": 59.47, "y_mm": 32.37, "z_mm": 37.62, "tolerance_mm": 2.0 },
+      "holes": {
+        "total": 6,
+        "through": 3,
+        "blind_flat": 3,
+        "blind_drill_point": 0,
+        "min_depth_mm": 0.1
+      }
+    },
+    {
+      "id": "spur_gear",
+      "path": "tests/fixtures/spur-M0.5-T10-steel.step",
+      "tier": "strict",
+      "parse_budget_ms": 20000,
+      "units": { "detected_unit": "millimetre", "scale_to_mm": 1 },
+      "bbox": { "x_mm": 5.79, "y_mm": 5.99, "z_mm": 3.0, "tolerance_mm": 2.0 },
+      "holes": { "total": 1, "through": 1 }
+    },
+    {
+      "id": "nist_ftc_07",
+      "path": "tests/fixtures/nist/ftc/nist_ftc_07_asme1_rd.stp",
+      "tier": "strict",
+      "parse_budget_ms": 12000,
+      "units": { "detected_unit": "millimetre", "scale_to_mm": 1 },
+      "bbox": { "x_mm": 12.02, "y_mm": 5.35, "z_mm": 8.64, "tolerance_mm": 2.0 },
+      "holes": { "total": 1, "blind_flat": 1, "min_depth_mm": 0.1 }
+    },
+    {
+      "id": "nist_ctc_03",
+      "path": "tests/fixtures/nist/ftc/nist_ctc_03_asme1_rc.stp",
+      "tier": "strict",
+      "parse_budget_ms": 8000,
+      "units": { "detected_unit": "millimetre", "scale_to_mm": 1 },
+      "bbox": { "x_mm": 12.21, "y_mm": 19.11, "z_mm": 11.28, "tolerance_mm": 2.0 },
+      "holes": { "total": 2 }
+    },
+    {
+      "id": "nist_ctc_01",
+      "path": "tests/fixtures/nist/ftc/nist_ctc_01_asme1_rd.stp",
+      "tier": "strict",
+      "parse_budget_ms": 10000,
+      "units": { "detected_unit": "millimetre", "scale_to_mm": 1 },
+      "bbox": { "x_mm": 800.0, "y_mm": 450.0, "z_mm": 150.0, "tolerance_mm": 2.0 },
+      "aag": { "concave_edge_count_min": 122, "convex_edge_count_min": 155, "manifold_edge_count_min": 370 },
+      "holes": { "total": 10, "min_depth_mm": 0.1 }
+    },
+    {
+      "id": "nist_ctc_05",
+      "path": "tests/fixtures/nist/ftc/nist_ctc_05_asme1_rd.stp",
+      "tier": "strict",
+      "parse_budget_ms": 10000,
+      "units": { "detected_unit": "millimetre", "scale_to_mm": 1 },
+      "bbox": { "x_mm": 20.75, "y_mm": 17.5, "z_mm": 13.29, "tolerance_mm": 2.0 },
+      "holes": { "total": 13, "min_depth_mm": 0.1 }
+    },
+    {
+      "id": "prismatic_00134379",
+      "path": "tests/fixtures/prismatic/00134379_5714d79fe4b038a63195ab5e_step_003.step",
+      "tier": "strict",
+      "parse_budget_ms": 15000,
+      "units": { "detected_unit": "metre", "scale_to_mm": 1000 },
+      "bbox": { "x_mm": 72.0, "y_mm": 45.0, "z_mm": 76.0, "tolerance_mm": 2.0 },
+      "aag": { "concave_edge_count_min": 40, "convex_edge_count_min": 19, "manifold_edge_count_min": 153 },
+      "holes": { "total": 26 }
+    },
+    {
+      "id": "prismatic_00256166",
+      "path": "tests/fixtures/prismatic/00256166_93b6ae2b148e2061c296529a_step_000.step",
+      "tier": "strict",
+      "parse_budget_ms": 10000,
+      "units": { "detected_unit": "metre", "scale_to_mm": 1000 },
+      "bbox": { "x_mm": 114.3, "y_mm": 44.45, "z_mm": 60.32, "tolerance_mm": 2.0 },
+      "holes": { "total": 1 }
+    },
+    {
+      "id": "prismatic_00013700",
+      "path": "tests/fixtures/prismatic/00013700_63c27b600a3e49a095464e77_step_000.step",
+      "tier": "strict",
+      "parse_budget_ms": 12000,
+      "units": { "detected_unit": "metre", "scale_to_mm": 1000 },
+      "bbox": { "x_mm": 99.5, "y_mm": 29.0, "z_mm": 60.0, "tolerance_mm": 2.0 },
+      "holes": { "total": 12 }
+    },
+    {
+      "id": "nist_ftc_10",
+      "path": "tests/fixtures/nist/ftc/nist_ftc_10_asme1_rb.stp",
+      "tier": "strict",
+      "parse_budget_ms": 15000,
+      "units": { "detected_unit": "millimetre", "scale_to_mm": 1 },
+      "bbox": { "x_mm": 141.8, "y_mm": 40.3, "z_mm": 75.0, "tolerance_mm": 2.0 },
+      "holes": { "total": 86, "pattern_instances_min": 1 }
+    },
+    {
+      "id": "htc_freecad_geometry",
+      "path": "tests/fixtures/nist_htc/nist_htc_geometry.stp",
+      "tier": "strict",
+      "notes": "FreeCAD HTC-inspired geometry (build-htc-geometry.sh)",
+      "parse_budget_ms": 2000,
+      "units": { "detected_unit": "millimetre", "scale_to_mm": 1 },
+      "bbox": { "x_mm": 120.0, "y_mm": 80.0, "z_mm": 28.0, "tolerance_mm": 2.0 },
+      "holes": {
+        "total": 13,
+        "blind_flat": 1,
+        "countersink": 12,
+        "unique_diameters_mm": [3.5, 4.0, 4.5, 5.0, 5.16, 5.5, 5.56, 6.0, 6.35, 6.5, 7.0, 8.0],
+        "pattern_instances_min": 2
+      }
+    },
+    {
+      "id": "prismatic_00130561",
+      "path": "tests/fixtures/prismatic/00130561_aff03b1e1a83b6df44d92a27_step_001.step",
+      "tier": "smoke",
+      "parse_budget_ms": 12000,
+      "max_extra_holes": 0,
+      "holes": { "total": 0, "total_min": 0, "total_max": 0 }
+    },
+    {
+      "id": "nist_ftc_08",
+      "path": "tests/fixtures/nist/ftc/nist_ftc_08_asme1_rc.stp",
+      "tier": "smoke",
+      "notes": "Assembly lid — bore confirmation may yield zero on geometry-only export",
+      "holes": { "total": 0, "total_min": 0, "total_max": 2 }
+    },
+    {
+      "id": "nist_ftc_09",
+      "path": "tests/fixtures/nist/ftc/nist_ftc_09_asme1_rd.stp",
+      "tier": "smoke",
+      "holes": { "total": 0, "total_min": 0, "total_max": 2 }
+    },
+    {
+      "id": "nist_ftc_11",
+      "path": "tests/fixtures/nist/ftc/nist_ftc_11_asme1_rb.stp",
+      "tier": "smoke",
+      "holes": { "total": 0, "total_min": 0, "total_max": 2 }
+    },
+    {
+      "id": "nist_ctc_02",
+      "path": "tests/fixtures/nist/ftc/nist_ctc_02_asme1_rc.stp",
+      "tier": "smoke",
+      "parse_budget_ms": 25000,
+      "holes": { "total": 194, "total_min": 180, "total_max": 210 }
+    },
+    {
+      "id": "nist_ctc_04",
+      "path": "tests/fixtures/nist/ftc/nist_ctc_04_asme1_rd.stp",
+      "tier": "smoke",
+      "parse_budget_ms": 25000,
+      "holes": { "total": 163, "total_min": 150, "total_max": 180 }
+    }
+  ]
+}

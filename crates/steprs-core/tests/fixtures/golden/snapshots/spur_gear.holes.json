@@ -1,0 +1,24 @@
+[
+  {
+    "id": 32,
+    "kind": "through",
+    "radius_mm": 3.0,
+    "diameter_mm": 6.0,
+    "origin": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -1.0
+    },
+    "depth_mm": 3.0,
+    "face_ids": [
+      17
+    ],
+    "instance_count": 21,
+    "detection_source": "geometry"
+  }
+]

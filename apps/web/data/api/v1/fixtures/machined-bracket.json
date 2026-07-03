@@ -1,0 +1,984 @@
+{
+  "api_version": "1",
+  "fixture_id": "machined-bracket",
+  "file_name": "machined-bracket.step",
+  "label": "3-Axis Mounting Bracket",
+  "generated_at": "1782192133",
+  "parse": {
+    "engine_version": "0.1.0",
+    "stats": {
+      "entity_count": 587,
+      "max_id": 612,
+      "density": 0.9575856443719413,
+      "storage_mode": "dense",
+      "parse_duration_ms": 7.013916015625,
+      "type_breakdown": [
+        {
+          "type_name": "CARTESIAN_POINT",
+          "count": 81
+        },
+        {
+          "type_name": "ORIENTED_EDGE",
+          "count": 78
+        },
+        {
+          "type_name": "DIRECTION",
+          "count": 71
+        },
+        {
+          "type_name": "EDGE_CURVE",
+          "count": 39
+        },
+        {
+          "type_name": "VECTOR",
+          "count": 39
+        },
+        {
+          "type_name": "LINE",
+          "count": 39
+        },
+        {
+          "type_name": "VERTEX_POINT",
+          "count": 26
+        },
+        {
+          "type_name": "AXIS2_PLACEMENT_3D",
+          "count": 16
+        },
+        {
+          "type_name": "SURFACE_STYLE_FILL_AREA",
+          "count": 15
+        },
+        {
+          "type_name": "STYLED_ITEM",
+          "count": 15
+        },
+        {
+          "type_name": "FILL_AREA_STYLE",
+          "count": 15
+        },
+        {
+          "type_name": "PLANE",
+          "count": 15
+        },
+        {
+          "type_name": "FILL_AREA_STYLE_COLOUR",
+          "count": 15
+        },
+        {
+          "type_name": "FACE_BOUND",
+          "count": 15
+        },
+        {
+          "type_name": "COLOUR_RGB",
+          "count": 15
+        },
+        {
+          "type_name": "PRESENTATION_STYLE_ASSIGNMENT",
+          "count": 15
+        },
+        {
+          "type_name": "ADVANCED_FACE",
+          "count": 15
+        },
+        {
+          "type_name": "EDGE_LOOP",
+          "count": 15
+        },
+        {
+          "type_name": "SURFACE_SIDE_STYLE",
+          "count": 15
+        },
+        {
+          "type_name": "SURFACE_STYLE_USAGE",
+          "count": 15
+        },
+        {
+          "type_name": "DIMENSIONAL_EXPONENTS",
+          "count": 2
+        },
+        {
+          "type_name": "PRODUCT_DEFINITION_FORMATION_WITH_SPECIFIED_SOURCE",
+          "count": 1
+        },
+        {
+          "type_name": "MECHANICAL_DESIGN_GEOMETRIC_PRESENTATION_REPRESENTATION",
+          "count": 1
+        },
+        {
+          "type_name": "PRODUCT_DEFINITION_CONTEXT",
+          "count": 1
+        },
+        {
+          "type_name": "PRODUCT_CONTEXT",
+          "count": 1
+        },
+        {
+          "type_name": "SHAPE_DEFINITION_REPRESENTATION",
+          "count": 1
+        },
+        {
+          "type_name": "PRODUCT_CATEGORY_RELATIONSHIP",
+          "count": 1
+        },
+        {
+          "type_name": "PRODUCT_RELATED_PRODUCT_CATEGORY",
+          "count": 1
+        },
+        {
+          "type_name": "PRODUCT_CATEGORY",
+          "count": 1
+        },
+        {
+          "type_name": "PRODUCT_DEFINITION",
+          "count": 1
+        },
+        {
+          "type_name": "APPLICATION_CONTEXT",
+          "count": 1
+        },
+        {
+          "type_name": "APPLICATION_PROTOCOL_DEFINITION",
+          "count": 1
+        },
+        {
+          "type_name": "ADVANCED_BREP_SHAPE_REPRESENTATION",
+          "count": 1
+        },
+        {
+          "type_name": "CLOSED_SHELL",
+          "count": 1
+        },
+        {
+          "type_name": "PRODUCT_DEFINITION_SHAPE",
+          "count": 1
+        },
+        {
+          "type_name": "MANIFOLD_SOLID_BREP",
+          "count": 1
+        },
+        {
+          "type_name": "PRODUCT",
+          "count": 1
+        }
+      ],
+      "stages_completed": [
+        "L0 prescan",
+        "L1 parse",
+        "L3 topology",
+        "L4 part metrics",
+        "L6 aag"
+      ]
+    },
+    "quoting": {
+      "units": {
+        "detected_unit": "metre",
+        "confidence": 0.88,
+        "scale_to_mm": 1000.0,
+        "source": "SI_UNIT(.METRE.) with sub-2m geometry"
+      },
+      "bounding_box_mm": {
+        "min": {
+          "x": -12.7,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "max": {
+          "x": 38.1,
+          "y": 87.99818102449899,
+          "z": 50.8
+        },
+        "dimensions": {
+          "x": 50.8,
+          "y": 87.99818102449899,
+          "z": 50.8
+        }
+      },
+      "part_envelope_mm": {
+        "min": {
+          "x": -12.7,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "max": {
+          "x": 38.1,
+          "y": 87.99818102449899,
+          "z": 50.8
+        },
+        "dimensions": {
+          "x": 50.8,
+          "y": 87.99818102449899,
+          "z": 50.8
+        }
+      },
+      "total_surface_area_mm2": 23042.510384178193,
+      "stock_volume_mm3": 227091.62587906304,
+      "estimated_mass_g": 613.1473898734703,
+      "setup_count": 2,
+      "holes": [],
+      "planar_faces": [
+        {
+          "id": 96,
+          "normal": {
+            "x": -1.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "area_mm2": 978001.3558554888
+        },
+        {
+          "id": 114,
+          "normal": {
+            "x": -1.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "area_mm2": 977039.2419432278
+        },
+        {
+          "id": 129,
+          "normal": {
+            "x": 1.22464679914735e-16,
+            "y": -1.0,
+            "z": 0.0
+          },
+          "area_mm2": 976077.1225652732
+        },
+        {
+          "id": 105,
+          "normal": {
+            "x": -1.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "area_mm2": 975052.7364078154
+        },
+        {
+          "id": 102,
+          "normal": {
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0
+          },
+          "area_mm2": 973768.0374347271
+        },
+        {
+          "id": 87,
+          "normal": {
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0
+          },
+          "area_mm2": 505155.2542460691
+        },
+        {
+          "id": 99,
+          "normal": {
+            "x": 0.0,
+            "y": -1.0,
+            "z": 0.0
+          },
+          "area_mm2": 461907.25571147323
+        },
+        {
+          "id": 117,
+          "normal": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          },
+          "area_mm2": 54157.19450365185
+        },
+        {
+          "id": 123,
+          "normal": {
+            "x": 1.83697019872103e-16,
+            "y": -1.0,
+            "z": 0.0
+          },
+          "area_mm2": 26787.12054131936
+        },
+        {
+          "id": 120,
+          "normal": {
+            "x": -0.707106781186547,
+            "y": 0.0,
+            "z": -0.707106781186548
+          },
+          "area_mm2": 24397.904008280595
+        },
+        {
+          "id": 93,
+          "normal": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          },
+          "area_mm2": 22852.779865657918
+        },
+        {
+          "id": 111,
+          "normal": {
+            "x": 1.0,
+            "y": 1.22464679914735e-16,
+            "z": 0.0
+          },
+          "area_mm2": 21468.061407815407
+        },
+        {
+          "id": 126,
+          "normal": {
+            "x": 1.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "area_mm2": 14625.231560006152
+        },
+        {
+          "id": 108,
+          "normal": {
+            "x": -3.06161699786839e-16,
+            "y": 1.0,
+            "z": 0.0
+          },
+          "area_mm2": 11970.112274627289
+        },
+        {
+          "id": 90,
+          "normal": {
+            "x": 1.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "area_mm2": 3943.7114838633406
+        }
+      ],
+      "fillets": [],
+      "pockets": [
+        {
+          "id": 43,
+          "area_mm2": 22852.779865657918,
+          "depth_mm": 50.8,
+          "volume_mm3": 1160921.2171754222,
+          "detection_method": "aag"
+        }
+      ],
+      "slots": [
+        {
+          "id": 45,
+          "width_mm": 0.0,
+          "length_mm": 1009.4287758554888,
+          "depth_mm": 1000.0,
+          "volume_mm3": 978001355.8554888
+        },
+        {
+          "id": 57,
+          "width_mm": 0.0,
+          "length_mm": 1008.4666619432277,
+          "depth_mm": 1000.0,
+          "volume_mm3": 977039241.9432278
+        },
+        {
+          "id": 67,
+          "width_mm": 1.231653667943533e-13,
+          "length_mm": 1007.5045425652731,
+          "depth_mm": 1000.0,
+          "volume_mm3": 976077122.5652733
+        },
+        {
+          "id": 51,
+          "width_mm": 0.0,
+          "length_mm": 1012.5075764078156,
+          "depth_mm": 1000.0,
+          "volume_mm3": 975052736.4078153
+        },
+        {
+          "id": 49,
+          "width_mm": 0.0,
+          "length_mm": 1005.195457434727,
+          "depth_mm": 1000.0,
+          "volume_mm3": 973768037.4347271
+        },
+        {
+          "id": 39,
+          "width_mm": 0.0,
+          "length_mm": 1710.281781186548,
+          "depth_mm": 1703.9317811865471,
+          "volume_mm3": 860750092.1432476
+        },
+        {
+          "id": 47,
+          "width_mm": 0.0,
+          "length_mm": 1713.6411314209247,
+          "depth_mm": 1000.0,
+          "volume_mm3": 461907255.7114732
+        },
+        {
+          "id": 61,
+          "width_mm": 1423.9229126074729,
+          "length_mm": 1937.5942425676856,
+          "depth_mm": 1423.9229126074706,
+          "volume_mm3": 34740734.53698839
+        },
+        {
+          "id": 63,
+          "width_mm": 3.122502256758253e-13,
+          "length_mm": 1699.2173865785114,
+          "depth_mm": 1000.0,
+          "volume_mm3": 26787120.54131936
+        },
+        {
+          "id": 55,
+          "width_mm": 2.42861286636753e-13,
+          "length_mm": 2000.0,
+          "depth_mm": 1000.0,
+          "volume_mm3": 21468061.407815408
+        },
+        {
+          "id": 53,
+          "width_mm": 5.221517662690189e-13,
+          "length_mm": 1714.9961757945846,
+          "depth_mm": 1699.2173865785105,
+          "volume_mm3": 20339822.896343533
+        },
+        {
+          "id": 65,
+          "width_mm": 0.0,
+          "length_mm": 1040.4694051690103,
+          "depth_mm": 1000.0,
+          "volume_mm3": 14625231.560006153
+        },
+        {
+          "id": 41,
+          "width_mm": 0.0,
+          "length_mm": 1079.5315190812714,
+          "depth_mm": 1000.0,
+          "volume_mm3": 3943711.483863341
+        },
+        {
+          "id": 43,
+          "width_mm": 2035.9833317813464,
+          "length_mm": 2039.0621139122613,
+          "depth_mm": 0.0,
+          "volume_mm3": 0.0
+        },
+        {
+          "id": 59,
+          "width_mm": 1959.5305948309897,
+          "length_mm": 2026.554542565273,
+          "depth_mm": 0.0,
+          "volume_mm3": 0.0
+        }
+      ],
+      "undercuts": [
+        {
+          "id": 61,
+          "normal": {
+            "x": -0.707106781186547,
+            "y": 0.0,
+            "z": -0.707106781186548
+          },
+          "reason": "Face normal opposes +Z tool approach"
+        }
+      ],
+      "requires_5_axis": true,
+      "min_internal_tool_diameter_mm": null,
+      "pmi_hole_entity_count": 0,
+      "detection_notes": [
+        "Hole metrics are geometry-derived (B-rep). No AP242 semantic hole PMI in file."
+      ]
+    },
+    "aag": {
+      "face_count": 15,
+      "adjacency_edge_count": 39,
+      "storage_mode": "dense",
+      "manifold_edge_count": 39,
+      "concave_edge_count": 17,
+      "convex_edge_count": 22,
+      "smooth_edge_count": 0,
+      "graph": [
+        {
+          "face_id": 39,
+          "surface_type": "PLANE",
+          "adjacent_faces": [
+            {
+              "face_id": 43,
+              "edge_curve_id": 324,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 45,
+              "edge_curve_id": 325,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 59,
+              "edge_curve_id": 326,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 61,
+              "edge_curve_id": 322,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 65,
+              "edge_curve_id": 323,
+              "edge_type": "CONVEX"
+            }
+          ]
+        },
+        {
+          "face_id": 41,
+          "surface_type": "PLANE",
+          "adjacent_faces": [
+            {
+              "face_id": 43,
+              "edge_curve_id": 331,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 47,
+              "edge_curve_id": 330,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 53,
+              "edge_curve_id": 328,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 61,
+              "edge_curve_id": 329,
+              "edge_type": "CONCAVE"
+            }
+          ]
+        },
+        {
+          "face_id": 43,
+          "surface_type": "PLANE",
+          "adjacent_faces": [
+            {
+              "face_id": 39,
+              "edge_curve_id": 324,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 41,
+              "edge_curve_id": 331,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 45,
+              "edge_curve_id": 338,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 47,
+              "edge_curve_id": 333,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 49,
+              "edge_curve_id": 337,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 51,
+              "edge_curve_id": 336,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 53,
+              "edge_curve_id": 342,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 55,
+              "edge_curve_id": 341,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 57,
+              "edge_curve_id": 334,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 63,
+              "edge_curve_id": 340,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 65,
+              "edge_curve_id": 339,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 67,
+              "edge_curve_id": 335,
+              "edge_type": "CONCAVE"
+            }
+          ]
+        },
+        {
+          "face_id": 45,
+          "surface_type": "PLANE",
+          "adjacent_faces": [
+            {
+              "face_id": 39,
+              "edge_curve_id": 325,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 43,
+              "edge_curve_id": 338,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 49,
+              "edge_curve_id": 344,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 59,
+              "edge_curve_id": 345,
+              "edge_type": "CONVEX"
+            }
+          ]
+        },
+        {
+          "face_id": 47,
+          "surface_type": "PLANE",
+          "adjacent_faces": [
+            {
+              "face_id": 41,
+              "edge_curve_id": 330,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 43,
+              "edge_curve_id": 333,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 57,
+              "edge_curve_id": 349,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 59,
+              "edge_curve_id": 348,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 61,
+              "edge_curve_id": 347,
+              "edge_type": "CONVEX"
+            }
+          ]
+        },
+        {
+          "face_id": 49,
+          "surface_type": "PLANE",
+          "adjacent_faces": [
+            {
+              "face_id": 43,
+              "edge_curve_id": 337,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 45,
+              "edge_curve_id": 344,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 51,
+              "edge_curve_id": 351,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 59,
+              "edge_curve_id": 352,
+              "edge_type": "CONVEX"
+            }
+          ]
+        },
+        {
+          "face_id": 51,
+          "surface_type": "PLANE",
+          "adjacent_faces": [
+            {
+              "face_id": 43,
+              "edge_curve_id": 336,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 49,
+              "edge_curve_id": 351,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 59,
+              "edge_curve_id": 355,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 67,
+              "edge_curve_id": 354,
+              "edge_type": "CONVEX"
+            }
+          ]
+        },
+        {
+          "face_id": 53,
+          "surface_type": "PLANE",
+          "adjacent_faces": [
+            {
+              "face_id": 41,
+              "edge_curve_id": 328,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 43,
+              "edge_curve_id": 342,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 55,
+              "edge_curve_id": 358,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 61,
+              "edge_curve_id": 357,
+              "edge_type": "CONVEX"
+            }
+          ]
+        },
+        {
+          "face_id": 55,
+          "surface_type": "PLANE",
+          "adjacent_faces": [
+            {
+              "face_id": 43,
+              "edge_curve_id": 341,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 53,
+              "edge_curve_id": 358,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 61,
+              "edge_curve_id": 360,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 63,
+              "edge_curve_id": 361,
+              "edge_type": "CONVEX"
+            }
+          ]
+        },
+        {
+          "face_id": 57,
+          "surface_type": "PLANE",
+          "adjacent_faces": [
+            {
+              "face_id": 43,
+              "edge_curve_id": 334,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 47,
+              "edge_curve_id": 349,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 59,
+              "edge_curve_id": 363,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 67,
+              "edge_curve_id": 364,
+              "edge_type": "CONVEX"
+            }
+          ]
+        },
+        {
+          "face_id": 59,
+          "surface_type": "PLANE",
+          "adjacent_faces": [
+            {
+              "face_id": 39,
+              "edge_curve_id": 326,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 45,
+              "edge_curve_id": 345,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 47,
+              "edge_curve_id": 348,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 49,
+              "edge_curve_id": 352,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 51,
+              "edge_curve_id": 355,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 57,
+              "edge_curve_id": 363,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 61,
+              "edge_curve_id": 366,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 67,
+              "edge_curve_id": 367,
+              "edge_type": "CONCAVE"
+            }
+          ]
+        },
+        {
+          "face_id": 61,
+          "surface_type": "PLANE",
+          "adjacent_faces": [
+            {
+              "face_id": 39,
+              "edge_curve_id": 322,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 41,
+              "edge_curve_id": 329,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 47,
+              "edge_curve_id": 347,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 53,
+              "edge_curve_id": 357,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 55,
+              "edge_curve_id": 360,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 59,
+              "edge_curve_id": 366,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 63,
+              "edge_curve_id": 369,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 65,
+              "edge_curve_id": 370,
+              "edge_type": "CONVEX"
+            }
+          ]
+        },
+        {
+          "face_id": 63,
+          "surface_type": "PLANE",
+          "adjacent_faces": [
+            {
+              "face_id": 43,
+              "edge_curve_id": 340,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 55,
+              "edge_curve_id": 361,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 61,
+              "edge_curve_id": 369,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 65,
+              "edge_curve_id": 372,
+              "edge_type": "CONCAVE"
+            }
+          ]
+        },
+        {
+          "face_id": 65,
+          "surface_type": "PLANE",
+          "adjacent_faces": [
+            {
+              "face_id": 39,
+              "edge_curve_id": 323,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 43,
+              "edge_curve_id": 339,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 61,
+              "edge_curve_id": 370,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 63,
+              "edge_curve_id": 372,
+              "edge_type": "CONCAVE"
+            }
+          ]
+        },
+        {
+          "face_id": 67,
+          "surface_type": "PLANE",
+          "adjacent_faces": [
+            {
+              "face_id": 43,
+              "edge_curve_id": 335,
+              "edge_type": "CONCAVE"
+            },
+            {
+              "face_id": 51,
+              "edge_curve_id": 354,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 57,
+              "edge_curve_id": 364,
+              "edge_type": "CONVEX"
+            },
+            {
+              "face_id": 59,
+              "edge_curve_id": 367,
+              "edge_type": "CONCAVE"
+            }
+          ]
+        }
+      ],
+      "graph_truncated": false
+    }
+  }
+}

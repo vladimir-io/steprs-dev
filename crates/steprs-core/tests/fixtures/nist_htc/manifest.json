@@ -1,0 +1,44 @@
+{
+  "schema": "steprs.nist-hole-golden/v1",
+  "sources": {
+    "htc_native": "https://www.nist.gov/document/nist-htc-pmi-cad-models",
+    "htc_geometry": "FreeCAD-authored HTC-inspired plate (scripts/build-htc-geometry.sh)",
+    "ftc_06_geometry": "NIST MBE PMI Test Bed — AP203 geometry only (nist_ftc_06_asme1_rd.stp)"
+  },
+  "htc": {
+    "description": "HTC-inspired hole detection golden (FreeCAD geometry analog of NIST catalog)",
+    "native_formats": ["CATIA V5", "Creo 10", "NX 2027"],
+    "geometry_fixture": "nist_htc_geometry.stp",
+    "authored_hole_features": [
+      { "id": "1-THRU-ALL", "kind": "through", "diameter_in": 0.203, "notes": "Linear pattern leader" },
+      { "id": "3-NUMERIC_THRU", "kind": "through", "diameter_in": 0.2188, "depth_in": 1.0 },
+      { "id": "4-SKETCH_EXTRUDE_THRU_ALL", "kind": "through", "notes": "Sketch extrude cut, not native hole feature" },
+      { "id": "5-REVOLVE_THRU_ALL", "kind": "through", "radius_in": 0.125, "notes": "Revolved cut" },
+      { "id": "6-COUNTERBORE_THRU", "kind": "counterbore", "notes": "Through counterbore" },
+      { "id": "7-COUNTERBORE_DRILL", "kind": "counterbore", "notes": "Blind counterbore" },
+      { "id": "8-COUNTERSUNK_DRILL", "kind": "countersink", "notes": "Circular pattern leader" },
+      { "id": "11-COUNTERBORE_ANGLED_SURFACE", "kind": "counterbore" },
+      { "id": "12-CONVEX_3_SURFACES", "kind": "through" },
+      { "id": "13-ANGLE", "kind": "through", "notes": "Axis parallel to ramp" },
+      { "id": "14-PARTIAL_HOLE", "kind": "through", "notes": "Mirrored — arc < 180°" },
+      { "id": "15-THRU_SELECTED", "kind": "blind_flat", "notes": "Up-to-surface termination" }
+    ],
+    "geometry_detection": {
+      "total_holes_min": 12,
+      "total_holes_max": 14,
+      "through_min": 0,
+      "blind_min": 1,
+      "unique_diameter_count_min": 10
+    }
+  },
+  "ftc_06_geometry": {
+    "fixture": "nist_ftc_06_geometry.stp",
+    "units": "millimetre",
+    "total_holes": 6,
+    "through": 4,
+    "blind_flat": 2,
+    "blind_drill_point": 0,
+    "unique_diameters_mm": [0.81, 1.25, 1.75],
+    "min_depth_mm": 0.1
+  }
+}

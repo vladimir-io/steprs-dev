@@ -1,0 +1,222 @@
+[
+  {
+    "id": 144,
+    "kind": "through",
+    "radius_mm": 10.0,
+    "diameter_mm": 20.0,
+    "origin": {
+      "x": -30.0,
+      "y": -125.0,
+      "z": -25.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 1.0,
+      "z": 0.0
+    },
+    "depth_mm": 45.0,
+    "face_ids": [
+      371
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 145,
+    "kind": "through",
+    "radius_mm": 10.0,
+    "diameter_mm": 20.0,
+    "origin": {
+      "x": 30.0,
+      "y": -125.0,
+      "z": -25.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 1.0,
+      "z": 0.0
+    },
+    "depth_mm": 45.0,
+    "face_ids": [
+      373
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 146,
+    "kind": "through",
+    "radius_mm": 17.5,
+    "diameter_mm": 35.0,
+    "origin": {
+      "x": -325.0,
+      "y": -175.0,
+      "z": 0.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -1.0
+    },
+    "depth_mm": 100.0,
+    "face_ids": [
+      374
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 147,
+    "kind": "through",
+    "radius_mm": 17.5,
+    "diameter_mm": 35.0,
+    "origin": {
+      "x": -325.0,
+      "y": 175.0,
+      "z": 0.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -1.0
+    },
+    "depth_mm": 100.0,
+    "face_ids": [
+      375
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 148,
+    "kind": "through",
+    "radius_mm": 17.5,
+    "diameter_mm": 35.0,
+    "origin": {
+      "x": 325.0,
+      "y": -175.0,
+      "z": 0.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -1.0
+    },
+    "depth_mm": 100.0,
+    "face_ids": [
+      376
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 149,
+    "kind": "through",
+    "radius_mm": 17.5,
+    "diameter_mm": 35.0,
+    "origin": {
+      "x": 325.0,
+      "y": 175.0,
+      "z": 0.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -1.0
+    },
+    "depth_mm": 100.0,
+    "face_ids": [
+      377
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 150,
+    "kind": "through",
+    "radius_mm": 12.5,
+    "diameter_mm": 25.0,
+    "origin": {
+      "x": -160.0,
+      "y": -45.0,
+      "z": 0.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -1.0
+    },
+    "depth_mm": 50.0,
+    "face_ids": [
+      378
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 151,
+    "kind": "through",
+    "radius_mm": 12.5,
+    "diameter_mm": 25.0,
+    "origin": {
+      "x": -160.0,
+      "y": 45.0,
+      "z": 0.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -1.0
+    },
+    "depth_mm": 50.0,
+    "face_ids": [
+      379
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 152,
+    "kind": "through",
+    "radius_mm": 12.5,
+    "diameter_mm": 25.0,
+    "origin": {
+      "x": 160.0,
+      "y": -45.0,
+      "z": 0.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -1.0
+    },
+    "depth_mm": 50.0,
+    "face_ids": [
+      380
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 153,
+    "kind": "through",
+    "radius_mm": 12.5,
+    "diameter_mm": 25.0,
+    "origin": {
+      "x": 160.0,
+      "y": 45.0,
+      "z": 0.0
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -1.0
+    },
+    "depth_mm": 50.0,
+    "face_ids": [
+      381
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  }
+]

@@ -1,0 +1,134 @@
+[
+  {
+    "id": 120,
+    "kind": "through",
+    "radius_mm": 0.875,
+    "diameter_mm": 1.75,
+    "origin": {
+      "x": 4.275,
+      "y": 2.0,
+      "z": -8.25
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -1.0
+    },
+    "depth_mm": 2.5,
+    "face_ids": [
+      283
+    ],
+    "instance_count": 2,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 122,
+    "kind": "through",
+    "radius_mm": 0.875,
+    "diameter_mm": 1.75,
+    "origin": {
+      "x": -1.425,
+      "y": 2.0,
+      "z": -8.25
+    },
+    "axis": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -1.0
+    },
+    "depth_mm": 2.5,
+    "face_ids": [
+      297
+    ],
+    "instance_count": 2,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 124,
+    "kind": "blind_flat",
+    "radius_mm": 0.625,
+    "diameter_mm": 1.25,
+    "origin": {
+      "x": 3.0,
+      "y": 3.46868168321588,
+      "z": -6.25
+    },
+    "axis": {
+      "x": 0.0,
+      "y": -1.0,
+      "z": 0.0
+    },
+    "depth_mm": 0.4750000000000001,
+    "face_ids": [
+      303
+    ],
+    "instance_count": 2,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 126,
+    "kind": "blind_flat",
+    "radius_mm": 0.625,
+    "diameter_mm": 1.25,
+    "origin": {
+      "x": -3.0,
+      "y": 3.46868168321588,
+      "z": -6.25
+    },
+    "axis": {
+      "x": 0.0,
+      "y": -1.0,
+      "z": 0.0
+    },
+    "depth_mm": 0.4750000000000001,
+    "face_ids": [
+      308
+    ],
+    "instance_count": 2,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 136,
+    "kind": "through",
+    "radius_mm": 0.40625,
+    "diameter_mm": 0.8125,
+    "origin": {
+      "x": 5.0,
+      "y": 3.1,
+      "z": -1.25
+    },
+    "axis": {
+      "x": 0.0,
+      "y": -1.05071076679395e-16,
+      "z": 1.0
+    },
+    "depth_mm": 0.5625,
+    "face_ids": [
+      323
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  },
+  {
+    "id": 138,
+    "kind": "through",
+    "radius_mm": 0.40625,
+    "diameter_mm": 0.8125,
+    "origin": {
+      "x": -5.0,
+      "y": 3.1,
+      "z": -1.25
+    },
+    "axis": {
+      "x": 0.0,
+      "y": -1.05071076679395e-16,
+      "z": 1.0
+    },
+    "depth_mm": 0.5625,
+    "face_ids": [
+      326
+    ],
+    "instance_count": 1,
+    "detection_source": "geometry"
+  }
+]

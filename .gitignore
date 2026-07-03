@@ -1,0 +1,46 @@
+# Dependencies
+node_modules
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnpm-store
+
+# Next.js
+.next
+out
+*.tsbuildinfo
+
+# Rust
+target
+**/*.rs.bk
+
+# Env
+.env
+.env*.local
+
+# OS / IDE
+.DS_Store
+*.log
+.idea
+.vscode
+
+# Turbo
+.turbo
+
+# Vercel
+.vercel
+
+# Solo-dev ops (not for the public repo)
+LAUNCH.md
+scripts/launch-vercel.sh
+
+# Playwright
+apps/web/test-results
+apps/web/playwright-report
+
+# Python
+__pycache__/
+*.pyc

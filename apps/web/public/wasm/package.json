@@ -1,0 +1,21 @@
+{
+  "name": "steprs-core",
+  "type": "module",
+  "description": "Client-side ISO 10303 STEP parser with adaptive arena for WASM",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vladimir-io/steprs-dev"
+  },
+  "files": [
+    "steprs_core_bg.wasm",
+    "steprs_core.js",
+    "steprs_core.d.ts"
+  ],
+  "main": "steprs_core.js",
+  "types": "steprs_core.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

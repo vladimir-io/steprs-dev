@@ -1,0 +1,786 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ParseResult",
+  "type": "object",
+  "required": [
+    "aag",
+    "engine_version",
+    "labels",
+    "quoting",
+    "stats",
+    "success"
+  ],
+  "properties": {
+    "aag": {
+      "$ref": "#/definitions/AagReport"
+    },
+    "bounding_box": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/BoundingBox"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "engine_version": {
+      "type": "string"
+    },
+    "error": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "labels": {
+      "$ref": "#/definitions/FaceLabelReport"
+    },
+    "mesh": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TessellatedMesh"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "quoting": {
+      "$ref": "#/definitions/QuotingReport"
+    },
+    "stats": {
+      "$ref": "#/definitions/ParseStats"
+    },
+    "success": {
+      "type": "boolean"
+    }
+  },
+  "definitions": {
+    "AagAdjacentFace": {
+      "type": "object",
+      "required": [
+        "edge_curve_id",
+        "edge_type",
+        "face_id"
+      ],
+      "properties": {
+        "edge_curve_id": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "edge_type": {
+          "type": "string"
+        },
+        "face_id": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        }
+      }
+    },
+    "AagFaceNode": {
+      "type": "object",
+      "required": [
+        "adjacent_faces",
+        "face_id",
+        "surface_type"
+      ],
+      "properties": {
+        "adjacent_faces": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AagAdjacentFace"
+          }
+        },
+        "face_id": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "surface_type": {
+          "type": "string"
+        }
+      }
+    },
+    "AagReport": {
+      "type": "object",
+      "required": [
+        "adjacency_edge_count",
+        "concave_edge_count",
+        "convex_edge_count",
+        "face_count",
+        "manifold_edge_count",
+        "smooth_edge_count",
+        "storage_mode"
+      ],
+      "properties": {
+        "adjacency_edge_count": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "concave_edge_count": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "convex_edge_count": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "face_count": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "graph": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AagFaceNode"
+          }
+        },
+        "graph_total_faces": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "graph_truncated": {
+          "default": false,
+          "type": "boolean"
+        },
+        "manifold_edge_count": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "smooth_edge_count": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "storage_mode": {
+          "type": "string"
+        }
+      }
+    },
+    "BoundingBox": {
+      "type": "object",
+      "required": [
+        "dimensions",
+        "max",
+        "min"
+      ],
+      "properties": {
+        "dimensions": {
+          "$ref": "#/definitions/Vec3"
+        },
+        "max": {
+          "$ref": "#/definitions/Vec3"
+        },
+        "min": {
+          "$ref": "#/definitions/Vec3"
+        }
+      }
+    },
+    "DetectedFillet": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "major_radius_mm",
+        "min_tool_diameter_mm",
+        "minor_radius_mm"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "kind": {
+          "type": "string"
+        },
+        "major_radius_mm": {
+          "type": "number",
+          "format": "double"
+        },
+        "min_tool_diameter_mm": {
+          "type": "number",
+          "format": "double"
+        },
+        "minor_radius_mm": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "DetectedPocket": {
+      "type": "object",
+      "required": [
+        "area_mm2",
+        "depth_mm",
+        "detection_method",
+        "id",
+        "volume_mm3"
+      ],
+      "properties": {
+        "area_mm2": {
+          "type": "number",
+          "format": "double"
+        },
+        "depth_mm": {
+          "type": "number",
+          "format": "double"
+        },
+        "detection_method": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "volume_mm3": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "DetectedSlot": {
+      "type": "object",
+      "required": [
+        "depth_mm",
+        "id",
+        "length_mm",
+        "volume_mm3",
+        "width_mm"
+      ],
+      "properties": {
+        "depth_mm": {
+          "type": "number",
+          "format": "double"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "length_mm": {
+          "type": "number",
+          "format": "double"
+        },
+        "volume_mm3": {
+          "type": "number",
+          "format": "double"
+        },
+        "width_mm": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "EntityTypeCount": {
+      "type": "object",
+      "required": [
+        "count",
+        "type_name"
+      ],
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "type_name": {
+          "type": "string"
+        }
+      }
+    },
+    "FaceClassification": {
+      "type": "object",
+      "required": [
+        "adjacency_degree",
+        "confidence",
+        "face_id",
+        "label"
+      ],
+      "properties": {
+        "adjacency_degree": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "confidence": {
+          "type": "number",
+          "format": "double"
+        },
+        "face_id": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "label": {
+          "type": "string"
+        }
+      }
+    },
+    "FaceLabelReport": {
+      "type": "object",
+      "required": [
+        "engine",
+        "face_classifications",
+        "notes"
+      ],
+      "properties": {
+        "engine": {
+          "type": "string"
+        },
+        "face_classifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FaceClassification"
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "FaceMeshRange": {
+      "type": "object",
+      "required": [
+        "face_id",
+        "index_count",
+        "index_start"
+      ],
+      "properties": {
+        "face_id": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "index_count": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "index_start": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        }
+      }
+    },
+    "MachiningHole": {
+      "type": "object",
+      "required": [
+        "axis",
+        "diameter_mm",
+        "id",
+        "kind",
+        "origin",
+        "radius_mm"
+      ],
+      "properties": {
+        "axis": {
+          "$ref": "#/definitions/Vec3"
+        },
+        "counterbore_diameter_mm": {
+          "description": "Larger coaxial cylinder diameter when `kind` is `counterbore`.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "depth_mm": {
+          "description": "Axial bore length from face bounds; absent when topology is incomplete.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "detection_source": {
+          "description": "`geometry` (B-rep) or `pmi` (AP242 semantic, when present).",
+          "default": "geometry",
+          "type": "string"
+        },
+        "diameter_mm": {
+          "type": "number",
+          "format": "double"
+        },
+        "face_ids": {
+          "description": "AdvancedFace ids bound to this cylindrical surface (for picking/highlight).",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint32",
+            "minimum": 0.0
+          }
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "instance_count": {
+          "description": "Collapsed linear/circular pattern count (geometry clustering).",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "kind": {
+          "type": "string"
+        },
+        "origin": {
+          "$ref": "#/definitions/Vec3"
+        },
+        "radius_mm": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "ParseStats": {
+      "type": "object",
+      "required": [
+        "density",
+        "entity_count",
+        "max_id",
+        "parse_duration_ms",
+        "stages_completed",
+        "storage_mode",
+        "type_breakdown"
+      ],
+      "properties": {
+        "density": {
+          "type": "number",
+          "format": "double"
+        },
+        "entities_skipped": {
+          "default": 0,
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "entity_count": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "max_id": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "parse_duration_ms": {
+          "type": "number",
+          "format": "double"
+        },
+        "stages_completed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "storage_mode": {
+          "type": "string"
+        },
+        "type_breakdown": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EntityTypeCount"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PlanarFace": {
+      "type": "object",
+      "required": [
+        "area_mm2",
+        "id",
+        "normal"
+      ],
+      "properties": {
+        "area_mm2": {
+          "type": "number",
+          "format": "double"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "normal": {
+          "$ref": "#/definitions/Vec3"
+        }
+      }
+    },
+    "QuotingReport": {
+      "type": "object",
+      "required": [
+        "bounding_box_mm",
+        "estimated_mass_g",
+        "fillets",
+        "holes",
+        "part_envelope_mm",
+        "planar_faces",
+        "pockets",
+        "requires_5_axis",
+        "setup_count",
+        "slots",
+        "stock_volume_mm3",
+        "total_surface_area_mm2",
+        "undercuts",
+        "units"
+      ],
+      "properties": {
+        "bounding_box_mm": {
+          "$ref": "#/definitions/BoundingBox"
+        },
+        "detection_notes": {
+          "description": "Non-fatal detection caveats surfaced to the UI.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "estimated_mass_g": {
+          "type": "number",
+          "format": "double"
+        },
+        "fillets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DetectedFillet"
+          }
+        },
+        "holes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MachiningHole"
+          }
+        },
+        "min_internal_tool_diameter_mm": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "part_envelope_mm": {
+          "description": "Trimmed part envelope (1st–99th percentile) for stock sizing without stray points.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/BoundingBox"
+            }
+          ]
+        },
+        "planar_faces": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PlanarFace"
+          }
+        },
+        "pmi_hole_entity_count": {
+          "description": "Count of STEP entities whose type name suggests semantic hole PMI (AP242).",
+          "default": 0,
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "pockets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DetectedPocket"
+          }
+        },
+        "requires_5_axis": {
+          "type": "boolean"
+        },
+        "setup_count": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DetectedSlot"
+          }
+        },
+        "stock_volume_mm3": {
+          "type": "number",
+          "format": "double"
+        },
+        "total_surface_area_mm2": {
+          "type": "number",
+          "format": "double"
+        },
+        "undercuts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UndercutFace"
+          }
+        },
+        "units": {
+          "$ref": "#/definitions/UnitMetadata"
+        }
+      }
+    },
+    "TessellatedMesh": {
+      "type": "object",
+      "required": [
+        "indices",
+        "normals",
+        "positions",
+        "triangle_count",
+        "truncated"
+      ],
+      "properties": {
+        "edge_positions": {
+          "description": "Line segment endpoints (xyz pairs) for edge overlay.",
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "edge_segment_count": {
+          "default": 0,
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "face_ranges": {
+          "description": "Triangle index ranges per STEP face id (for raycast picking).",
+          "default": [],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FaceMeshRange"
+          }
+        },
+        "indices": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint32",
+            "minimum": 0.0
+          }
+        },
+        "mesh_engine": {
+          "description": "Mesh backend: `brepkit`, `fan`, or `occt`.",
+          "default": "fan",
+          "type": "string"
+        },
+        "normals": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "positions": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "triangle_count": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "truncated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "UndercutFace": {
+      "type": "object",
+      "required": [
+        "id",
+        "normal",
+        "reason"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "normal": {
+          "$ref": "#/definitions/Vec3"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "UnitMetadata": {
+      "type": "object",
+      "required": [
+        "confidence",
+        "detected_unit",
+        "scale_to_mm",
+        "source"
+      ],
+      "properties": {
+        "confidence": {
+          "type": "number",
+          "format": "double"
+        },
+        "detected_unit": {
+          "type": "string"
+        },
+        "scale_to_mm": {
+          "type": "number",
+          "format": "double"
+        },
+        "source": {
+          "type": "string"
+        }
+      }
+    },
+    "Vec3": {
+      "type": "object",
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "properties": {
+        "x": {
+          "type": "number",
+          "format": "double"
+        },
+        "y": {
+          "type": "number",
+          "format": "double"
+        },
+        "z": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    }
+  }
+}

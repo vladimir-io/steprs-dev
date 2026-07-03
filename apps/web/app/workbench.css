@@ -1,0 +1,435 @@
+/* STEPrs Studio — workbench & analysis UI */
+
+.tools-workspace[data-loaded="true"] {
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.workbench {
+  gap: 0.5rem;
+}
+
+/* LLM handoff — compact copy control (icon must be sized; unset SVG defaults to 300×150) */
+.llm-handoff-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem 1.25rem;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: var(--steprs-radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--steprs-panel);
+}
+
+.llm-handoff-strip__copy {
+  min-width: 0;
+}
+
+.llm-handoff-strip__eyebrow {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.llm-handoff-strip__title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-foreground);
+}
+
+.llm-handoff-strip__body {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.llm-handoff-strip__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.65rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.6875rem;
+  color: var(--color-muted);
+}
+
+.llm-handoff-strip__action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.llm-handoff-strip__hint {
+  margin: 0;
+  max-width: 14rem;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  text-align: right;
+  color: var(--steprs-fg-subtle);
+}
+
+@media (max-width: 720px) {
+  .llm-handoff-strip {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .llm-handoff-strip__action {
+    align-items: flex-start;
+  }
+
+  .llm-handoff-strip__hint {
+    text-align: left;
+    max-width: none;
+  }
+}
+
+.workbench__file-dot {
+  width: 0.375rem;
+  height: 0.375rem;
+  box-shadow: none;
+}
+
+.workbench__file-name {
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: -0.02em;
+}
+
+.workbench__file-meta {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 0.625rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.workbench__replace {
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--steprs-radius-sm);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-muted);
+  box-shadow: none;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.workbench__replace:hover:not(:disabled) {
+  color: var(--color-foreground);
+  border-color: var(--color-border-strong);
+  background: var(--steprs-ink-3);
+  transform: none;
+  box-shadow: none;
+}
+
+.workbench__replace:active:not(:disabled) {
+  transform: none;
+}
+
+.workbench__body {
+  gap: 0.625rem;
+}
+
+.workbench__viewer {
+  border-radius: var(--steprs-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: none;
+}
+
+/* Part insight card */
+.part-summary {
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--steprs-radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--steprs-panel-inset);
+  box-shadow: none;
+}
+
+.part-summary--compact {
+  padding: 0.5rem 0.65rem;
+}
+
+.part-summary__title {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.part-summary__envelope {
+  margin-top: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--color-muted);
+}
+
+.part-summary__features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.part-summary__features li {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.4rem;
+  border-radius: 2px;
+  background: var(--steprs-panel);
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+}
+
+.part-summary__hints {
+  margin: 0.45rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.part-summary__hints li {
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.part-summary__hints li + li {
+  margin-top: 0.25rem;
+}
+
+.part-summary__insight {
+  margin-top: 0.4rem;
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: var(--steprs-fg-subtle);
+}
+
+/* Tab switcher */
+.workbench-tabs {
+  gap: 0.5rem;
+}
+
+.tool-segment {
+  padding: 0.125rem;
+  border-radius: var(--steprs-radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--steprs-panel-inset);
+  gap: 0.125rem;
+}
+
+.tool-segment__indicator {
+  border-radius: calc(var(--steprs-radius-sm) - 2px);
+  background: var(--steprs-panel);
+  box-shadow: var(--steprs-shadow-sm);
+}
+
+.tool-segment__btn {
+  padding: 0.4rem 0.75rem;
+  border-radius: calc(var(--steprs-radius-sm) - 2px);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.tool-segment__btn--active {
+  color: var(--color-foreground);
+  background: transparent;
+  box-shadow: none;
+}
+
+.workbench-tabs__edit {
+  border-radius: var(--steprs-radius-sm);
+  background: var(--steprs-panel-inset);
+  border: 1px solid var(--color-border);
+}
+
+.workbench-tabs__edit--active {
+  border-color: var(--color-border-strong);
+  background: var(--steprs-panel);
+}
+
+/* Hole list */
+.tool-hole-row {
+  padding: 0.55rem 0.65rem;
+  border-radius: var(--steprs-radius-sm);
+  border: 1px solid transparent;
+  background: var(--steprs-panel-inset);
+  font-size: 0.8125rem;
+}
+
+.tool-hole-row--active {
+  border-color: var(--color-border-strong);
+  background: var(--steprs-row-hover);
+  box-shadow: inset 2px 0 0 var(--color-foreground);
+}
+
+.tool-hole-row__id {
+  font-weight: 500;
+  color: var(--color-foreground);
+}
+
+/* Panel cards inside rail */
+.workbench-panel .glass-panel,
+.tool-mapper-copy,
+.stock-panel__hero,
+.aag-panel__hero,
+.header-sheet,
+.intel-strip {
+  border-radius: var(--steprs-radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--steprs-panel-inset);
+  box-shadow: none;
+}
+
+/* Export trigger */
+.export-menu__trigger {
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--steprs-radius-sm);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-foreground);
+  box-shadow: none;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.export-menu__trigger:hover:not(:disabled) {
+  border-color: var(--color-border-strong);
+  background: var(--steprs-ink-3);
+  transform: none;
+  box-shadow: none;
+}
+
+.export-menu__trigger:active:not(:disabled) {
+  transform: none;
+}
+
+.export-menu__panel {
+  border-radius: var(--steprs-radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--steprs-panel);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--steprs-shadow-md);
+}
+
+html.dark .tools-workspace[data-loaded="true"] {
+  background: transparent;
+}
+
+html.dark .workbench__header,
+html.dark .workbench__rail,
+html.dark .workbench__viewer {
+  background: var(--steprs-panel);
+  border-color: var(--color-border);
+  box-shadow: none;
+}
+
+html.dark .workbench__file-dot {
+  box-shadow: none;
+}
+
+html.dark .workbench__file-meta {
+  background: transparent;
+  border: none;
+}
+
+html.dark .part-summary {
+  background: var(--steprs-panel-inset);
+  border-color: var(--color-border);
+}
+
+html.dark .tool-segment {
+  background: var(--steprs-panel-inset);
+  border-color: var(--color-border);
+}
+
+html.dark .tool-segment__indicator {
+  background: var(--steprs-panel);
+  box-shadow: none;
+}
+
+html.dark .tool-segment__btn--active {
+  color: var(--color-foreground);
+  background: transparent;
+}
+
+html.dark .tool-hole-row--active {
+  box-shadow: inset 2px 0 0 var(--color-foreground);
+}
+
+html.dark .workbench-panel .glass-panel,
+html.dark .tool-mapper-copy,
+html.dark .stock-panel__hero,
+html.dark .aag-panel__hero,
+html.dark .header-sheet,
+html.dark .intel-strip {
+  background: var(--steprs-panel-inset);
+  border-color: var(--color-border);
+  box-shadow: none;
+}
+
+html.dark .workbench__replace {
+  background: transparent;
+}
+
+html.dark .workbench__replace:hover:not(:disabled) {
+  background: var(--steprs-ink-3);
+}
+
+/* ── Workspace Skeleton ──────────────────────────────────────── */
+
+.skeleton-pulse {
+  animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.skeleton-line {
+  background: var(--steprs-ink-12);
+  border-radius: var(--steprs-radius-sm);
+}
+
+.skeleton-circle {
+  background: var(--steprs-ink-12);
+  border-radius: 0;
+}
+
+html.dark .skeleton-line,
+html.dark .skeleton-circle {
+  background: rgba(255, 255, 255, 0.08);
+}

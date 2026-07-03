@@ -1,0 +1,249 @@
+/* steprs — flat minimal light / dark tokens */
+
+:root {
+  color-scheme: light;
+
+  --steprs-radius-sm: 0;
+  --steprs-radius-md: 0;
+  --steprs-radius-lg: 0;
+  --steprs-radius-xl: 0;
+
+  --steprs-bg: #ffffff;
+  --steprs-bg-subtle: #fafafa;
+  --steprs-fg: #09090b;
+  --steprs-fg-muted: #71717a;
+  --steprs-fg-subtle: #a1a1aa;
+
+  --steprs-accent: #09090b;
+  --steprs-accent-hover: #27272a;
+  --steprs-accent-muted: #f4f4f5;
+  --steprs-accent-fg: #ffffff;
+  --steprs-accent-glow: transparent;
+  --steprs-link: #09090b;
+
+  --steprs-danger: #dc2626;
+  --steprs-danger-fg: #ffffff;
+  --steprs-warn: #ca8a04;
+  --steprs-warn-fg: #09090b;
+  --steprs-positive: #16a34a;
+  --steprs-positive-fg: #ffffff;
+
+  --steprs-shadow-sm: none;
+  --steprs-shadow-md: none;
+  --steprs-shadow-lg: none;
+  --steprs-shadow-panel: none;
+  --steprs-shadow-viewer: inset 0 0 0 1px var(--steprs-border);
+
+  --steprs-card-bg: #ffffff;
+  --steprs-card-border: #e4e4e7;
+  --steprs-card-highlight: #ffffff;
+  --steprs-shadow-apple-card: none;
+
+  --steprs-panel: #ffffff;
+  --steprs-panel-muted: #fafafa;
+  --steprs-panel-inset: #f4f4f5;
+  --steprs-panel-active: #ffffff;
+  --steprs-surface: #ffffff;
+  --steprs-surface-elevated: #ffffff;
+  --steprs-surface-sunken: #fafafa;
+  --steprs-border: #e4e4e7;
+  --steprs-border-strong: #d4d4d8;
+  --steprs-glow: transparent;
+
+  --steprs-viewer: #f4f4f5;
+  --steprs-viewer-fog: #fafafa;
+  --steprs-viewer-grid: #e4e4e7;
+  --steprs-viewer-grid-fine: #f4f4f5;
+  --steprs-viewer-edge: #71717a;
+  --steprs-viewer-floor: #e4e4e7;
+  --steprs-viewer-hemi-sky: #fafafa;
+  --steprs-viewer-hemi-ground: #e4e4e7;
+  --steprs-viewer-light: 0.9;
+  --steprs-viewer-chip-bg: #ffffff;
+  --steprs-viewer-chip-fg: #71717a;
+
+  --steprs-ink-2: rgba(9, 9, 11, 0.02);
+  --steprs-ink-3: rgba(9, 9, 11, 0.03);
+  --steprs-ink-4: rgba(9, 9, 11, 0.04);
+  --steprs-ink-5: rgba(9, 9, 11, 0.05);
+  --steprs-ink-6: rgba(9, 9, 11, 0.06);
+  --steprs-ink-7: rgba(9, 9, 11, 0.07);
+  --steprs-ink-8: rgba(9, 9, 11, 0.08);
+  --steprs-ink-10: rgba(9, 9, 11, 0.1);
+  --steprs-ink-11: rgba(9, 9, 11, 0.11);
+  --steprs-ink-12: rgba(9, 9, 11, 0.12);
+  --steprs-ink-14: rgba(9, 9, 11, 0.14);
+  --steprs-ink-16: rgba(9, 9, 11, 0.16);
+  --steprs-ink-18: rgba(9, 9, 11, 0.18);
+  --steprs-ink-22: rgba(9, 9, 11, 0.22);
+  --steprs-ink-24: rgba(9, 9, 11, 0.24);
+  --steprs-ink-28: rgba(9, 9, 11, 0.28);
+  --steprs-ink-35: rgba(9, 9, 11, 0.35);
+  --steprs-ink-42: rgba(9, 9, 11, 0.42);
+  --steprs-ink-48: rgba(9, 9, 11, 0.48);
+  --steprs-ink-55: rgba(9, 9, 11, 0.55);
+  --steprs-ink-72: rgba(9, 9, 11, 0.72);
+  --steprs-ink-85: rgba(9, 9, 11, 0.85);
+  --steprs-ink-92: rgba(9, 9, 11, 0.92);
+  --steprs-ink-96: rgba(9, 9, 11, 0.96);
+
+  --steprs-paper-85: rgba(255, 255, 255, 0.85);
+  --steprs-paper-96: rgba(255, 255, 255, 0.96);
+
+  --steprs-chrome-bg: #ffffff;
+  --steprs-chrome-shadow: none;
+  --steprs-chrome-inset: none;
+  --steprs-chrome-blur: none;
+
+  --steprs-ambient-base: #ffffff;
+  --steprs-ambient-a: transparent;
+  --steprs-ambient-b: transparent;
+  --steprs-ambient-c: transparent;
+
+  --steprs-drop-bg: #ffffff;
+  --steprs-drop-bg-hover: #fafafa;
+  --steprs-drop-shadow: inset 0 0 0 1px var(--steprs-border);
+  --steprs-drop-shadow-hover: inset 0 0 0 1px var(--steprs-border-strong);
+  --steprs-drop-glow: none;
+
+  --steprs-btn-primary-bg: #09090b;
+  --steprs-btn-primary-fg: #ffffff;
+  --steprs-btn-primary-hover: #27272a;
+  --steprs-btn-glow-shadow: none;
+  --steprs-btn-glass-bg: #ffffff;
+  --steprs-btn-glass-hover: #fafafa;
+
+  --steprs-selection: rgba(9, 9, 11, 0.12);
+  --steprs-focus-ring: #09090b;
+
+  --steprs-scrollbar: rgba(9, 9, 11, 0.2);
+  --steprs-scrollbar-hover: rgba(9, 9, 11, 0.35);
+
+  --steprs-hole-active-border: var(--steprs-fg);
+  --steprs-hole-active-bg: var(--steprs-accent-muted);
+  --steprs-row-hover: rgba(9, 9, 11, 0.03);
+
+  --steprs-overlay: rgba(9, 9, 11, 0.4);
+  --steprs-overlay-strong: rgba(9, 9, 11, 0.65);
+  --steprs-menu-bg: #ffffff;
+  --steprs-menu-shadow: none;
+
+  --steprs-status-dot: var(--steprs-positive);
+  --steprs-status-glow: transparent;
+
+  --steprs-brand-warm: var(--steprs-fg);
+  --steprs-brand-warm-soft: var(--steprs-fg-muted);
+  --steprs-brand-glow: transparent;
+
+  --steprs-chrome-border: #e4e4e7;
+  --steprs-chrome-border-strong: #d4d4d8;
+  --steprs-chrome-badge-bg: #f4f4f5;
+  --steprs-chrome-inset-highlight: none;
+
+  --steprs-live-dot: var(--steprs-positive);
+  --steprs-live-glow: transparent;
+  --steprs-live-border: #e4e4e7;
+  --steprs-live-bg: transparent;
+  --steprs-live-fg: var(--steprs-fg-muted);
+
+  --steprs-segment-bg: #f4f4f5;
+  --steprs-segment-active-bg: #ffffff;
+  --steprs-segment-active-shadow: none;
+  --steprs-segment-active-color: var(--steprs-fg);
+}
+
+html.dark {
+  color-scheme: dark;
+
+  --steprs-bg: #09090b;
+  --steprs-bg-subtle: #0c0c0e;
+  --steprs-fg: #fafafa;
+  --steprs-fg-muted: #a1a1aa;
+  --steprs-fg-subtle: #71717a;
+
+  --steprs-accent: #fafafa;
+  --steprs-accent-hover: #e4e4e7;
+  --steprs-accent-muted: #18181b;
+  --steprs-accent-fg: #09090b;
+  --steprs-link: #fafafa;
+
+  --steprs-danger: #f87171;
+  --steprs-danger-fg: #09090b;
+  --steprs-warn: #facc15;
+  --steprs-warn-fg: #09090b;
+  --steprs-positive: #4ade80;
+  --steprs-positive-fg: #09090b;
+
+  --steprs-shadow-viewer: inset 0 0 0 1px var(--steprs-border);
+
+  --steprs-panel: #09090b;
+  --steprs-panel-muted: #111113;
+  --steprs-panel-inset: #0c0c0e;
+  --steprs-panel-active: #18181b;
+  --steprs-surface: #09090b;
+  --steprs-surface-elevated: #111113;
+  --steprs-surface-sunken: #000000;
+  --steprs-border: #27272a;
+  --steprs-border-strong: #3f3f46;
+
+  --steprs-viewer: #000000;
+  --steprs-viewer-fog: #09090b;
+  --steprs-viewer-grid: #18181b;
+  --steprs-viewer-grid-fine: #111113;
+  --steprs-viewer-edge: #a1a1aa;
+  --steprs-viewer-floor: #18181b;
+  --steprs-viewer-hemi-sky: #111113;
+  --steprs-viewer-hemi-ground: #000000;
+  --steprs-viewer-light: 0.55;
+  --steprs-viewer-chip-bg: #111113;
+  --steprs-viewer-chip-fg: #a1a1aa;
+
+  --steprs-chrome-bg: #09090b;
+
+  --steprs-ambient-base: #09090b;
+
+  --steprs-drop-bg: #09090b;
+  --steprs-drop-bg-hover: #111113;
+  --steprs-drop-shadow: inset 0 0 0 1px var(--steprs-border);
+  --steprs-drop-shadow-hover: inset 0 0 0 1px var(--steprs-border-strong);
+
+  --steprs-btn-primary-bg: #fafafa;
+  --steprs-btn-primary-fg: #09090b;
+  --steprs-btn-primary-hover: #e4e4e7;
+  --steprs-btn-glass-bg: #111113;
+  --steprs-btn-glass-hover: #18181b;
+
+  --steprs-selection: rgba(250, 250, 250, 0.14);
+  --steprs-focus-ring: #fafafa;
+
+  --steprs-scrollbar: rgba(250, 250, 250, 0.18);
+  --steprs-scrollbar-hover: rgba(250, 250, 250, 0.32);
+
+  --steprs-row-hover: rgba(250, 250, 250, 0.04);
+
+  --steprs-overlay: rgba(0, 0, 0, 0.72);
+  --steprs-overlay-strong: rgba(0, 0, 0, 0.88);
+  --steprs-menu-bg: #111113;
+
+  --steprs-chrome-border: #27272a;
+  --steprs-chrome-border-strong: #3f3f46;
+  --steprs-chrome-badge-bg: #18181b;
+
+  --steprs-live-fg: var(--steprs-fg-muted);
+
+  --steprs-segment-bg: #000000;
+  --steprs-segment-active-bg: #18181b;
+  --steprs-segment-active-color: #fafafa;
+
+  --steprs-ink-2: rgba(250, 250, 250, 0.02);
+  --steprs-ink-3: rgba(250, 250, 250, 0.03);
+  --steprs-ink-4: rgba(250, 250, 250, 0.04);
+  --steprs-ink-5: rgba(250, 250, 250, 0.05);
+  --steprs-ink-6: rgba(250, 250, 250, 0.06);
+  --steprs-ink-8: rgba(250, 250, 250, 0.08);
+  --steprs-ink-10: rgba(250, 250, 250, 0.1);
+  --steprs-ink-12: rgba(250, 250, 250, 0.12);
+  --steprs-ink-22: rgba(250, 250, 250, 0.22);
+  --steprs-ink-55: rgba(250, 250, 250, 0.55);
+  --steprs-ink-85: rgba(250, 250, 250, 0.85);
+}

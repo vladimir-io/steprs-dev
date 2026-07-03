@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd ../.. && yarn workspace @steprs/web build",
+  "devCommand": "yarn dev",
+  "installCommand": "cd ../.. && corepack enable && yarn install --immutable",
+  "framework": "nextjs",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.steprs.dev" }],
+      "destination": "https://steprs.dev/:path*",
+      "permanent": true
+    }
+  ]
+}
