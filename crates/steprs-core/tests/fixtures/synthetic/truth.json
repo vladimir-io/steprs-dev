@@ -1,0 +1,93 @@
+{
+  "cases": [
+    {
+      "name": "plate_through_holes",
+      "envelope_mm": [
+        60,
+        40,
+        10
+      ],
+      "holes": [
+        {
+          "kind": "through",
+          "diameter_mm": 5.0,
+          "depth_mm": 10.0,
+          "count": 3
+        }
+      ],
+      "pockets": []
+    },
+    {
+      "name": "plate_blind_flat",
+      "envelope_mm": [
+        50,
+        30,
+        12
+      ],
+      "holes": [
+        {
+          "kind": "blind_flat",
+          "diameter_mm": 6.0,
+          "depth_mm": 6.0,
+          "count": 2
+        }
+      ],
+      "pockets": []
+    },
+    {
+      "name": "plate_blind_drill_point",
+      "envelope_mm": [
+        50,
+        30,
+        15
+      ],
+      "holes": [
+        {
+          "kind": "blind_drill_point",
+          "diameter_mm": 5.0,
+          "depth_mm": 8.0,
+          "count": 3
+        }
+      ],
+      "pockets": []
+    },
+    {
+      "name": "deep_pocket_block",
+      "envelope_mm": [
+        80,
+        50,
+        35
+      ],
+      "holes": [],
+      "pockets": [
+        {
+          "depth_mm": 30.0
+        }
+      ],
+      "preflight_expect": {
+        "rule": "pocket-reach",
+        "status": "fail",
+        "with_tools": [
+          "em-flat-6.35"
+        ]
+      }
+    },
+    {
+      "name": "counterbore_plate",
+      "envelope_mm": [
+        40,
+        40,
+        12
+      ],
+      "holes": [
+        {
+          "kind": "counterbore",
+          "diameter_mm": 5.0,
+          "counterbore_diameter_mm": 10.0,
+          "count": 1
+        }
+      ],
+      "pockets": []
+    }
+  ]
+}

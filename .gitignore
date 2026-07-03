@@ -33,14 +33,13 @@ target
 # Vercel
 .vercel
 
-# Solo-dev ops (not for the public repo)
+
 LAUNCH.md
 scripts/launch-vercel.sh
 
-# Playwright
+
 apps/web/test-results
 apps/web/playwright-report
 
-# Python
-__pycache__/
-*.pyc
+# Local synthetic fixture venv (scripts/synthetic/)
+.venv-synthetic
