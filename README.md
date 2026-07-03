@@ -55,6 +55,8 @@ Web app layout and routes: [`apps/web/README.md`](apps/web/README.md).
 
 Contributing: [`CONTRIBUTING.md`](CONTRIBUTING.md) — scope, test matrix, NIST fixtures.
 
+**Agent / reviewer context:** [`llm.json`](llm.json) — architecture, eval, open vs proprietary scope. **Competitive AI boundary:** [`docs/COMPETITIVE_BOUNDARY.md`](docs/COMPETITIVE_BOUNDARY.md).
+
 ### Batch validation
 
 ```bash
@@ -81,9 +83,8 @@ parser.cancel();                        // abort in-flight parse
 `.github/workflows/ci.yml`:
 
 1. **rust-wasm** — fmt, tests, golden suite, scorecard, schema drift, clippy (`--no-default-features`)
-2. **rust-brepkit** — editor kernel tests (`brepkit-kernel`)
-3. **wasm-freshness** — WASM rebuild diff + smoke test (all strict snapshots)
-4. **web** — lint, typecheck, unit tests, Playwright E2E, `next build`
+2. **wasm-freshness** — WASM rebuild diff + smoke test (all strict snapshots)
+3. **web** — lint, typecheck, unit tests, Playwright E2E, `next build`
 
 ### SEO endpoints
 
@@ -105,4 +106,4 @@ JSON-LD: `WebSite`, `SoftwareApplication`, `WebPage`, `FAQPage` on every page.
 
 The hosted app, geometry editor, and future cloud APIs are **proprietary** — see [OPEN_CORE.md](./OPEN_CORE.md) for what is open vs closed.
 
-The Edit tab is off on the public site. Enable locally with `NEXT_PUBLIC_ENABLE_EDIT=true` in `apps/web/.env.local`.
+The geometry editor is **not in this public repository** — Edit tab shows “Coming soon”. See [docs/PRIVATE_EDITOR.md](./docs/PRIVATE_EDITOR.md).

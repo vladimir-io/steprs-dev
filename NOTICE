@@ -1,0 +1,13 @@
+This repository is the **public open-core** release.
+
+Apache-2.0 (see LICENSE)
+  crates/steprs-core/          Rust STEP parse pipeline (WASM production build)
+  packages/ts-types/           ParseResult JSON types shared with the parser
+
+Proprietary — not in this repository
+  Geometry editor (NL agent, intent planner, brepkit edit kernel)
+  packages/steprs-mcp/         MCP bridge (README stub only; source in private repo)
+  apps/web/lib/editor/         api-guard.ts stub only; routes return 503
+
+Production steprs.dev ships parse-only WASM. Editor APIs always return 503.
+See OPEN_CORE.md, docs/COMPETITIVE_BOUNDARY.md, docs/PRIVATE_EDITOR.md.

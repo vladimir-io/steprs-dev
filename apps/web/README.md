@@ -11,14 +11,15 @@ components/
   layout/            Header, footer
   parser/            Drop zone, preview, progress
   tools/             Stock, schema, tooling workspace
-  editor/            Geometry editor UI (dev-only until released)
   ui/                Primitives
-lib/                 Site config, WASM worker, editor agent, guardrails
+lib/                 Site config, WASM worker, guardrails, handoff API
 public/
-  wasm/              Committed steprs-core WASM bundle
+  wasm/              Committed steprs-core WASM bundle (parse-only)
   fixtures/          Benchy demo STEP (benchy.stp)
 workers/             Parser + OCCT preview workers
 ```
+
+The geometry editor is **not in this public repository**. The Edit tab shows “Coming soon”; `/api/editor/*` returns 503.
 
 ## Commands
 

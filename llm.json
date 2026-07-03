@@ -1,0 +1,187 @@
+{
+  "schema": "steprs.llm-context/v2",
+  "purpose": "Full project context for external agent review. Public open-core repository — parser, eval, handoff only; editor removed per competitive IP review.",
+  "repository": {
+    "name": "steprs-dev",
+    "url": "https://github.com/vladimir-io/steprs-dev",
+    "homepage": "https://steprs.dev",
+    "scope": "public_open_core_only",
+    "license_apache2": ["crates/steprs-core/src (parse path)", "packages/ts-types"],
+    "license_proprietary": "Geometry editor, agent layer, brepkit kernel, MCP — private repository (not in public git)",
+    "notice_file": "NOTICE",
+    "boundary_doc": "docs/COMPETITIVE_BOUNDARY.md",
+    "private_editor_doc": "docs/PRIVATE_EDITOR.md",
+    "open_core_doc": "OPEN_CORE.md"
+  },
+  "external_review": {
+    "verdict": "Technically sound; competitive posture fixed by repo split",
+    "checklist": {
+      "open_core_boundary": {
+        "runtime_enforced": true,
+        "repository_enforced": true,
+        "note": "Editor/agent/brepkit source removed from public repo; API routes are 503 stubs"
+      },
+      "golden_eval_honesty": {
+        "strict_fixture_count": 12,
+        "hole_identity_precision": 1.0,
+        "hole_identity_recall": 1.0,
+        "parse_ms_p50": 68,
+        "parse_ms_p95": 249,
+        "limitations_documented": true
+      },
+      "scope_oversell": false,
+      "part_envelope_is_stock_truth": true,
+      "parser_edge_cases": {
+        "missing_data_fail_fast": true,
+        "step_string_escapes": true,
+        "malformed_entity_skip": true,
+        "assembly_header_markers": true,
+        "gaps": ["deep nested assembly topology", "malicious polyglot DATA fuzz corpus"]
+      },
+      "handoff_api_credible_without_edit_moat": true
+    },
+    "recommendation_executed": "Open-source parser + AAG handoff; lock editor and agent orchestration in private repository"
+  },
+  "product": {
+    "name": "steprs.dev",
+    "tagline": "Client-side STEP CAM triage — check header, holes, stock, export AAG",
+    "not_claimed": [
+      "Full DFM audit",
+      "AP242 PMI certification",
+      "Production geometry editing on public site",
+      "Cloud STEP upload",
+      "ML/ONNX hole or face models"
+    ],
+    "primary_user": "Machinists and CAM programmers preparing STEP files before programming",
+    "privacy_model": "Parse runs in browser Web Worker + Rust WASM; no STEP upload path in production workflow"
+  },
+  "architecture": {
+    "summary": "Single Rust forward pass produces ParseResult; Next.js workbench displays results; OCCT is viewport preview only.",
+    "pipeline_stages": [
+      { "id": "L0+L1", "name": "ingest", "module": "crates/steprs-core/src/parser", "work": "DATA scan, nom entity parse, adaptive arena, fail-fast missing DATA, skip malformed entities" },
+      { "id": "L3", "name": "topology", "module": "crates/steprs-core/src/topology", "work": "FaceRecord IR, edge-indexed adjacency (petgraph)" },
+      { "id": "L4", "name": "quoting", "module": "crates/steprs-core/src/features/quoting.rs", "work": "Units, part_envelope_mm (1st–99th percentile trim), holes, fillets, pockets, slots, setups" },
+      { "id": "L6", "name": "aag", "module": "crates/steprs-core/src/features/aag.rs", "work": "Joshi–Chang convexity, pocket/slot patterns" },
+      { "id": "L7", "name": "mesh", "module": "crates/steprs-core/src/features/mesh.rs", "work": "Fan triangulation (capped)" },
+      { "id": "L8", "name": "labels", "module": "crates/steprs-core/src/features/labels.rs", "work": "Rule-based face labels (topology-v2), not ML" }
+    ],
+    "machining_truth": "Rust ParseResult.quoting and ParseResult.aag",
+    "display_only": "OCCT mesh in apps/web/workers/occt-preview.worker.ts",
+    "worker": "apps/web/workers/step-parser.worker.ts",
+    "wasm_build": "wasm-pack --no-default-features (parse-only; no editor APIs in bundle)"
+  },
+  "open_core": {
+    "license": "Apache-2.0",
+    "paths": [
+      "crates/steprs-core/src/parser",
+      "crates/steprs-core/src/arena",
+      "crates/steprs-core/src/topology",
+      "crates/steprs-core/src/pipeline",
+      "crates/steprs-core/src/features",
+      "crates/steprs-core/src/output",
+      "crates/steprs-core/src/wasm",
+      "crates/steprs-core/tests/fixtures",
+      "packages/ts-types",
+      "apps/web/public/wasm"
+    ],
+    "public_apis": {
+      "wasm": ["parse", "parseQuotingOnly", "parseWithOptions", "parseWithOptionsWire", "cancel", "setProgressHandler", "getKernelInfo"],
+      "http_v1": [
+        "GET /api/v1/fixtures",
+        "GET /api/v1/fixtures/{id}",
+        "GET /api/v1/fixtures/{id}/handoff",
+        "GET /api/v1/fixtures/{id}/aag"
+      ]
+    }
+  },
+  "proprietary_boundary": {
+    "in_public_repo": false,
+    "api_stubs": ["POST /api/editor/agent", "POST /api/editor/session"],
+    "removed_from_public_git": [
+      "apps/web/lib/editor/agent, ollama, intent-planner, part-intelligence, context, clarify, training, server-session",
+      "apps/web/components/editor/",
+      "packages/steprs-mcp/src/",
+      "crates/steprs-core/src/editor/",
+      "crates/steprs-core/src/kernel/brepkit.rs"
+    ],
+    "private_repo_contains": "NL agent, EditOp planner, brepkit edit kernel, MCP tools, editor WASM (editor feature build)",
+    "history_scrub_before_launch": "Recommended if editor source was ever pushed to public remote — see docs/PRIVATE_EDITOR.md"
+  },
+  "features": {
+    "header_check": "STEP HEADER: AP203/AP214/AP242 hints, units, assembly byte-scan markers",
+    "holes": "Heuristic cylindrical features from B-rep; drill/endmill catalog; kinds: through, blind, countersink",
+    "stock": "part_envelope_mm, billet snap, allowance — not OCCT raw bbox",
+    "aag_export": "Face adjacency with concave/convex/smooth; compact graph for handoff",
+    "handoff": "Facts-before-topology SteprsHandoff (apps/web/lib/api/steprs-handoff.ts)",
+    "labels": "FaceLabelReport — topology-v2 rule classifier (optional)",
+    "editor": "Not in public repo — Coming soon UI + 503 API stubs only"
+  },
+  "evaluation": {
+    "scorecard_file": "SCORECARD.md",
+    "strict_fixture_count": 12,
+    "golden_manifest": "crates/steprs-core/tests/fixtures/golden/manifest.json",
+    "gates": [
+      "Gate 1: per-hole identity precision/recall >= 0.95",
+      "Gate 2: hole counts, kinds, units, part_envelope bbox, AAG bounds",
+      "Gate 3: parse time budgets",
+      "Gate 4: known_limitations documented"
+    ],
+    "latest_strict_metrics": {
+      "hole_identity_precision": 1.0,
+      "hole_identity_recall": 1.0,
+      "parse_ms_p50": 68,
+      "parse_ms_p95": 249
+    },
+    "ci_jobs": ["rust-wasm", "wasm-freshness", "web"],
+    "wasm_smoke": "apps/web/scripts/wasm-smoke-test.mjs — 12 strict snapshots"
+  },
+  "known_limitations": [
+    "Hole metrics are B-rep geometry unless AP242 semantic PMI entities are present.",
+    "FTC-08/09/11 may report zero holes when bore rims fail confirmation.",
+    "Partial-arc holes (<180°) and sketch-extrude cuts may be missed or misclassified.",
+    "HTC geometry is FreeCAD-authored (fixture id: htc_freecad_geometry).",
+    "FreeCAD through-cuts may classify as countersink when conical face caps are present."
+  ],
+  "quality_signals": {
+    "strengths": [
+      "Rust ParseResult is machining truth; OCCT is display-only",
+      "12 unique strict golden fixtures with Gate 1 hole identity",
+      "part_envelope_mm aligned with stock golden gates",
+      "Parse-only WASM; editor IP removed from public git",
+      "Honest scope; rule-based labels; no ML oversell",
+      "Parser tests: DATA fail-fast, escapes, malformed skip, assembly header scan"
+    ],
+    "risks": [
+      "Heuristic holes — not PMI-verified",
+      "Root package.json license field says Apache-2.0 but workbench shell is mixed — see NOTICE",
+      "Prior public git history may contain editor source until history scrub",
+      "Handoff prompt and compactAagGraph are public by design"
+    ]
+  },
+  "key_modules": {
+    "rust_core": "crates/steprs-core/src/lib.rs",
+    "golden_runner": "crates/steprs-core/src/golden.rs",
+    "parse_errors": "crates/steprs-core/src/error.rs",
+    "ts_contract": "packages/ts-types/src/index.ts",
+    "schema": "packages/ts-types/parse-result.schema.json",
+    "workbench": "apps/web/components/tools/tools-workbench.tsx",
+    "handoff_builder": "apps/web/lib/api/steprs-handoff.ts",
+    "product_flags": "apps/web/lib/product-flags.ts"
+  },
+  "agent_review_questions": [
+    "Is the open-core vs proprietary boundary enforced at repository level (not just runtime)?",
+    "Is the golden eval narrative honest (n=12 unique strict fixtures)?",
+    "Does public copy oversell DFM, PMI, ML, or verified editing?",
+    "Is part_envelope_mm the stock truth (not raw bbox or OCCT)?",
+    "Are parser edge cases tested (DATA fail-fast, STEP string escapes, malformed skip)?",
+    "Is the handoff API a credible public contract without leaking edit moat?",
+    "Was git history scrubbed before competitive editor launch?"
+  ],
+  "commands": {
+    "test_wasm_path": "cargo test --manifest-path crates/steprs-core/Cargo.toml --no-default-features",
+    "golden": "cargo test --test golden_suite --manifest-path crates/steprs-core/Cargo.toml --no-default-features",
+    "scorecard": "./scripts/generate-scorecard.sh",
+    "build_wasm": "yarn build:wasm",
+    "wasm_smoke": "yarn wasm:smoke"
+  }
+}

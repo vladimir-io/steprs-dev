@@ -1,63 +1,77 @@
 # Open core at steprs.dev
 
-steprs.dev ships as **open core**: the STEP parser engine is open source; the hosted product and advanced editing layer are proprietary until released.
+steprs.dev ships as **open core**: the STEP parser engine is Apache-2.0 in this public repository; the geometry editor and agent layer live in a **private repository**.
 
-## Open source (Apache-2.0)
-
-Published under [LICENSE](./LICENSE). Safe to fork, embed, and ship in your own tools.
+## Open source (Apache-2.0) — in this repo
 
 | Component | Path | What it does |
 |-----------|------|----------------|
 | **steprs-core** | `crates/steprs-core/` | Rust WASM parser — ingest, topology, quoting, AAG, optional mesh + labels |
-| **WASM bundle** | `apps/web/public/wasm/` | Pre-built `steprs_core.js` + `.wasm` committed with the web app |
+| **WASM bundle** | `apps/web/public/wasm/` | Pre-built parse-only `steprs_core.js` + `.wasm` |
 | **Shared types** | `packages/ts-types/` | Parse result JSON contract |
-| **Tests & fixtures** | `crates/steprs-core/tests/`, `apps/web/public/fixtures/` | Golden parses, batch examples |
+| **Tests & fixtures** | `crates/steprs-core/tests/`, golden suite | NIST MBE calibration, scorecard |
 
-Capabilities in the open core today:
+Capabilities in the open core:
 
 - ISO 10303 STEP ingest (AP203/AP214-style DATA sections)
-- Bounding box, units, holes, pockets, fillets, setup count
+- `part_envelope_mm`, units, holes, pockets, fillets, setup count
 - Attributed adjacency graph (pocket/slot detection)
-- Optional triangle mesh for preview (capped for WASM memory)
+- Optional triangle mesh for preview (fan triangulation, capped)
 - Browser Web Worker API (`parse`, `parseQuotingOnly`, `cancel`)
+- Analysis handoff API (`/api/v1/fixtures/*/handoff`)
 
-## Proprietary / not in public release (yet)
+## Proprietary — not in this public repository
 
-These stay **closed** on [steprs.dev](https://steprs.dev) production until explicitly released:
+| Component | Status in public repo |
+|-----------|----------------------|
+| **Geometry editor UI** | Edit tab → “Coming soon” only |
+| **Editor API** | `/api/editor/*` → **503** stubs |
+| **NL agent / intent planner / Ollama prompts** | Removed — private repo |
+| **B-rep edit kernel (brepkit)** | Removed — private repo |
+| **MCP bridge** | README stub only (`packages/steprs-mcp/`) |
+| **Hosted SaaS** | Future cloud APIs, billing — not open source |
 
-| Component | Path | Status |
-|-----------|------|--------|
-| **Geometry editor** | `apps/web/components/editor/`, `apps/web/lib/editor/` | Disabled in prod (`Edit` tab → Coming soon) |
-| **Editor API** | `apps/web/app/api/editor/` | Returns 503 unless `NEXT_PUBLIC_ENABLE_EDIT=true` |
-| **Server edit sessions** | `apps/web/lib/editor/server-session.ts`, MCP bridges | Hosted / dev only |
-| **B-rep edit kernel ops** | `crates/steprs-core` editor session (`openSession`, `applyEdits`) | Wired for preview; not exposed publicly |
-| **Hosted SaaS** | Future cloud APIs, team features, billing | Not open source |
+The Next.js workbench shell (UI, branding) is source-visible here for the triage product but is **not Apache-2.0** for competitive editor logic — see [NOTICE](./NOTICE).
 
-The **Next.js web app shell** (UI, branding, analytics, deployment) is source-available in this repo for development but marketed as part of the proprietary product layer—the **parser engine** is what we open license.
+Details: [docs/PRIVATE_EDITOR.md](./docs/PRIVATE_EDITOR.md), [docs/COMPETITIVE_BOUNDARY.md](./docs/COMPETITIVE_BOUNDARY.md).
 
-## Production vs preview
+## Competitive posture (external review)
+
+An independent architecture review confirmed:
+
+- **Runtime gates were necessary but insufficient** — proprietary editor source in public git exposed copyable AI moat (prompts, planners, brepkit wiring).
+- **Golden eval is honest** — n=12 strict unique fixtures, documented limitations.
+- **Scope copy is credible** — no DFM/PMI/ML oversell; rule-based labels only.
+- **Handoff API is the right public contract** — topology export without edit-generation logic.
+
+This repository now reflects the recommended split: parse + eval public; editor private.
+
+Agent review bundle: [llm.json](./llm.json).
+
+## Production vs development
 
 | Environment | Analysis tabs | Edit tab |
 |-------------|---------------|----------|
-| **steprs.dev (default)** | Stock · Schema · Tooling — local WASM, read-only | Coming soon |
-| **Local preview** | Same | Set `NEXT_PUBLIC_ENABLE_EDIT=true` in `apps/web/.env.local` |
+| **steprs.dev** | Stock · Schema · Tooling — local WASM | Coming soon |
+| **Private editor deploy** | Same | Full editor (separate repo + build) |
 
-Analysis parses do **not** open an editor WASM session in production (`openEditor: false`), which keeps memory use predictable and avoids edit-path instability.
+Analysis parses do **not** open an editor WASM session (`openEditor: false`).
 
-## WASM vs brepkit in CI
+## CI (public repo)
 
-| Build | Cargo features | What it tests |
-|-------|----------------|---------------|
-| **Shipped WASM** | `--no-default-features` | Golden suite, scorecard, clippy, WASM smoke — matches production build |
-| **Editor dev** | `brepkit-kernel` | B-rep edit kernel integration only |
+| Job | What it tests |
+|-----|---------------|
+| **rust-wasm** | Golden suite, scorecard, schema drift, clippy (`--no-default-features`) |
+| **wasm-freshness** | WASM rebuild diff + 12-fixture smoke |
+| **web** | lint, typecheck, unit tests, Playwright E2E, `next build` |
 
-CI runs these as separate jobs so a green brepkit build cannot mask a broken production WASM path. OCCT is viewport-only; stock and holes use Rust `ParseResult`.
+No brepkit or editor test jobs in the public repository.
 
 ## Contributing
 
-Parser bugs and quoting accuracy fixes in `steprs-core` are the highest-value contributions. UI work on Stock / Schema / Tooling is welcome. Editor changes are accepted but remain off by default in production builds.
+Parser bugs and quoting accuracy fixes in `steprs-core` are the highest-value contributions. UI work on Stock / Schema / Tooling is welcome. Editor work happens in the private repository.
 
 ## Questions
 
 - Parser / WASM: open an issue with a sample STEP (or sanitized excerpt).
-- Licensing for commercial embed: Apache-2.0 applies to `steprs-core`; contact us for hosted editor licensing when available.
+- Commercial embed: Apache-2.0 applies to `steprs-core`; contact us for hosted editor licensing.

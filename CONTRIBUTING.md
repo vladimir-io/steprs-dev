@@ -62,10 +62,6 @@ CI jobs in `.github/workflows/ci.yml`:
 - `cargo run --example generate_schema` + diff on `parse-result.schema.json`
 - `cargo clippy -D warnings`
 
-**rust-brepkit** (editor dev path, `brepkit-kernel` feature)
-
-- `cargo test --lib --tests`
-
 **wasm-freshness**
 
 - Rebuild WASM with `--no-default-features`; diff `apps/web/public/wasm/`
