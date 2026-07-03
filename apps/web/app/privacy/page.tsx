@@ -45,19 +45,22 @@ export default function PrivacyPage() {
         <section>
           <h2 className="mb-2 text-base font-semibold">Analytics</h2>
           <p>
-            We use Vercel Analytics and Speed Insights to measure page
-            performance and aggregate usage. These services do not receive your
-            STEP file contents. Analytics may include page views, referrers, and
-            coarse device information.
+            The public site does not load third-party analytics scripts. STEP
+            file contents are never sent to analytics providers.
+          </p>
+          <p className="mt-2">
+            Private operator deployments may optionally enable aggregate page
+            metrics via an environment flag. That data excludes file names,
+            geometry, and parse output.
           </p>
         </section>
 
         <section>
           <h2 className="mb-2 text-base font-semibold">Hosting</h2>
           <p>
-            The site is hosted on Vercel. Standard web server logs (IP address,
-            user agent, requested URL) may be retained by the host per their
-            policies.
+            The site may be hosted on a static platform. Standard web server
+            logs (IP address, user agent, requested URL) may be retained by the
+            host per their policies.
           </p>
         </section>
 

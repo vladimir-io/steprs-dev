@@ -2,6 +2,8 @@
 
 import { track } from "@vercel/analytics";
 
+import { productFlags } from "@/lib/product-flags";
+
 type ParseEventProps = {
   fileSizeBucket: string;
   durationMs?: number;
@@ -11,6 +13,8 @@ type ParseEventProps = {
 };
 
 export function trackParseStarted(fileSizeBytes: number) {
+  if (!productFlags.analyticsEnabled) return;
+
   const bucket =
     fileSizeBytes < 1024 * 1024
       ? "<1MB"
@@ -24,6 +28,8 @@ export function trackParseStarted(fileSizeBytes: number) {
 }
 
 export function trackParseCompleted(props: ParseEventProps) {
+  if (!productFlags.analyticsEnabled) return;
+
   track("parse_completed", {
     fileSizeBucket: props.fileSizeBucket,
     durationMs: props.durationMs ?? 0,
@@ -33,6 +39,8 @@ export function trackParseCompleted(props: ParseEventProps) {
 }
 
 export function trackParseError(message: string) {
+  if (!productFlags.analyticsEnabled) return;
+
   track("parse_error", { message: message.slice(0, 120) });
 }
 

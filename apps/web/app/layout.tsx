@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Inter } from "next/font/google";
 import Script from "next/script";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-
+import { SiteAnalytics } from "@/components/analytics/site-analytics";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { ExtensionErrorGuard } from "@/components/providers/extension-error-guard";
@@ -136,8 +134,7 @@ export default function RootLayout({
           </main>
           <SiteFooter />
         </div>
-        <Analytics />
-        <SpeedInsights />
+        <SiteAnalytics />
       </body>
     </html>
   );

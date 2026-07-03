@@ -7,6 +7,11 @@ const isProd = process.env.NODE_ENV === "production";
  * Dev mode allows eval for Next.js / Turbopack.
  */
 export function buildContentSecurityPolicy(): string {
+  const analyticsConnect =
+    process.env.NEXT_PUBLIC_ENABLE_ANALYTICS === "true"
+      ? " https://vitals.vercel-insights.com https://*.vercel-analytics.com"
+      : "";
+
   const directives = [
     "default-src 'self'",
     isProd
@@ -17,7 +22,7 @@ export function buildContentSecurityPolicy(): string {
     "img-src 'self' data: blob:",
     "media-src 'self' blob:",
     "font-src 'self'",
-    "connect-src 'self' https://vitals.vercel-insights.com https://*.vercel-analytics.com",
+    `connect-src 'self'${analyticsConnect}`,
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'none'",
