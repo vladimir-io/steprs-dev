@@ -11,7 +11,7 @@ components/
   layout/            Header, footer
   parser/            Drop zone, preview, progress
   tools/             Stock, schema, tooling workspace
-  editor/            AI edit UI (dev-only until released)
+  editor/            Geometry editor UI (dev-only until released)
   ui/                Primitives
 lib/                 Site config, WASM worker, editor agent, guardrails
 public/

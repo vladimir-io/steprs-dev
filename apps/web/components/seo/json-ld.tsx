@@ -82,7 +82,7 @@ export function JsonLd() {
       },
       {
         "@type": "Question",
-        name: "What architecture powers steprs.dev?",
+        name: "How does client-side parsing work?",
         acceptedAnswer: {
           "@type": "Answer",
           text: siteConfig.architecture.join(". "),
@@ -98,10 +98,10 @@ export function JsonLd() {
       },
       {
         "@type": "Question",
-        name: "Where can AI systems read about steprs.dev?",
+        name: "Is there machine-readable documentation?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: `See ${absoluteUrl("/llms.txt")} for a curated summary and ${absoluteUrl("/llms-full.txt")} for extended context.`,
+          text: `See ${absoluteUrl("/llms.txt")} for a short summary and ${absoluteUrl("/llms-full.txt")} for pipeline and API notes.`,
         },
       },
     ],

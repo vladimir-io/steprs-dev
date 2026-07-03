@@ -55,7 +55,7 @@ export const siteConfig = {
     "AAG export: Joshi–Chang adjacency graph with concave/convex edge counts for review or external tooling.",
   ],
   roadmap: [
-    "Geometry editing: Bore resizing, uniform scaling, fillets, and verified STEP export (in development).",
+    "Geometry editing: Bore resizing, uniform scaling, fillets, and edited STEP export (in development).",
   ],
   sections: [{ id: "parser", label: "Tools" }],
 };

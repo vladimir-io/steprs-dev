@@ -27,7 +27,7 @@ These stay **closed** on [steprs.dev](https://steprs.dev) production until expli
 
 | Component | Path | Status |
 |-----------|------|--------|
-| **AI geometry editor** | `apps/web/components/editor/`, `apps/web/lib/editor/` | Disabled in prod (`Edit` tab → Coming soon) |
+| **Geometry editor** | `apps/web/components/editor/`, `apps/web/lib/editor/` | Disabled in prod (`Edit` tab → Coming soon) |
 | **Editor API** | `apps/web/app/api/editor/` | Returns 503 unless `NEXT_PUBLIC_ENABLE_EDIT=true` |
 | **Server edit sessions** | `apps/web/lib/editor/server-session.ts`, MCP bridges | Hosted / dev only |
 | **B-rep edit kernel ops** | `crates/steprs-core` editor session (`openSession`, `applyEdits`) | Wired for preview; not exposed publicly |

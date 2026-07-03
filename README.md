@@ -72,7 +72,7 @@ const parser = new StepParser();
 parser.setProgressHandler((stage) => console.log(stage));
 parser.parse(bytes);                    // full pipeline
 parser.parseQuotingOnly(bytes);         // skip mesh + labels
-parser.parseWithOptions(bytes, false, true); // mesh off, labels on
+parser.parseWithOptions(bytes, false, true); // mesh off, face labels on
 parser.cancel();                        // abort in-flight parse
 ```
 
@@ -103,6 +103,6 @@ JSON-LD: `WebSite`, `SoftwareApplication`, `WebPage`, `FAQPage` on every page.
 
 **steprs-core** (Rust WASM parser) is [Apache-2.0](./LICENSE).
 
-The hosted app, AI editor, and future cloud APIs are **proprietary** — see [OPEN_CORE.md](./OPEN_CORE.md) for what is open vs closed.
+The hosted app, geometry editor, and future cloud APIs are **proprietary** — see [OPEN_CORE.md](./OPEN_CORE.md) for what is open vs closed.
 
 The Edit tab is off on the public site. Enable locally with `NEXT_PUBLIC_ENABLE_EDIT=true` in `apps/web/.env.local`.

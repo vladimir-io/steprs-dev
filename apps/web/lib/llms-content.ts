@@ -13,7 +13,7 @@ ${siteConfig.name} is an **open-core** STEP (ISO 10303) check workbench: the Rus
 ## Core pages
 
 - [Home: live tools](${url}/): Header check, hole list, stock sizer, and AAG export for STEP files
-- [Workbench](${url}/#parser): Drop a STEP file or try example parts (hole plate, mounting plate, machined bracket)
+- [Workbench](${url}/#parser): Drop a STEP file or try example parts (NIST CTC-01 plate, mounting plate, machined bracket)
 
 ## Documentation
 
@@ -55,7 +55,7 @@ ${siteConfig.architecture.map((line) => `- ${line}`).join("\n")}
 
 ### Roadmap (not public yet)
 
-- **AI geometry editor**: natural-language bore/scale/fillet edits with verified STEP export (disabled on steprs.dev until ready)
+- **Geometry editor**: bore/scale/fillet edits with STEP export (disabled on steprs.dev until ready)
 
 See OPEN_CORE.md in the GitHub repository for the open-source vs proprietary split.
 

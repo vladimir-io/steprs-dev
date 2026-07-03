@@ -51,7 +51,7 @@ export function LlmHandoffStrip({
           onCopied={onCopied}
         />
         <p className="llm-handoff-strip__hint">
-          Paste into Claude, ChatGPT, or your shop assistant.
+          Paste into your job notes or CAM planning doc.
         </p>
       </div>
     </section>

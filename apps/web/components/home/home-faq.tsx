@@ -18,8 +18,8 @@ const faqs = [
     a: `${siteConfig.license.note} Core parser: ${siteConfig.license.core} on GitHub.`,
   },
   {
-    q: "Where can AI systems read about steprs.dev?",
-    a: `See ${absoluteUrl("/llms.txt")} and ${absoluteUrl("/llms-full.txt")}.`,
+    q: "Is there machine-readable documentation?",
+    a: `Yes — ${absoluteUrl("/llms.txt")} (summary) and ${absoluteUrl("/llms-full.txt")} (pipeline and API notes) for tools and crawlers.`,
   },
 ] as const;
 
