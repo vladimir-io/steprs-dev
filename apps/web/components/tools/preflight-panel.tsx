@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { usePreflightConfig } from "@/hooks/use-preflight-config";
@@ -25,6 +25,7 @@ import { cribUrlFromConfig } from "@/lib/preflight/share-crib";
 import { buildCribShareTweet, openXIntent } from "@/lib/preflight/x-share";
 import { TOOL_KITS, toolKitToConfig } from "@/lib/preflight/tool-kits";
 import { MACHINING_ALLOWANCE_MM } from "@/lib/stock-sizer";
+import { trackInteraction } from "@/lib/telemetry";
 import { cn } from "@/lib/utils";
 import { CrashRiskCard } from "./crash-risk-card";
 import { MachinabilityBadge } from "./machinability-badge";
@@ -63,6 +64,20 @@ export function PreflightPanel({ result, isParsing, fileName }: PreflightPanelPr
     return runPreflight(result, config);
   }, [result, config]);
 
+  useEffect(() => {
+    if (!report) return;
+    const missingTools = report.checks.filter(c => c.rule === "hole-tooling" && c.status === "warn");
+    missingTools.forEach(c => {
+      // Fire-and-forget telemetry for programmatic SEO generation signals
+      trackInteraction("unsupported_feature", { 
+        rule: c.rule, 
+        detail: c.detail,
+        title: c.title,
+        machine: config.machineId 
+      });
+    });
+  }, [report, config.machineId]);
+
   const handleShare = useCallback(async () => {
     if (!report || !result) return;
     const payload = buildSharePayload(report, config, result, fileName);
@@ -70,6 +85,7 @@ export function PreflightPanel({ result, isParsing, fileName }: PreflightPanelPr
     try {
       await navigator.clipboard.writeText(url);
       setShareMsg("Link copied");
+      trackInteraction("share_link_copied", { score: report.machinabilityScore, machine: config.machineId });
     } catch {
       setShareMsg(url);
     }
@@ -88,6 +104,7 @@ export function PreflightPanel({ result, isParsing, fileName }: PreflightPanelPr
   }, [config, machine?.label]);
 
   const handleShareCribToX = useCallback(() => {
+    trackInteraction("x_post_clicked", { type: "crib", machine: machine?.label });
     const url = cribUrlFromConfig(config, machine?.label);
     openXIntent(
       buildCribShareTweet({
@@ -108,6 +125,11 @@ export function PreflightPanel({ result, isParsing, fileName }: PreflightPanelPr
       );
       const check = compareGcodeToModel(text, modelDeep);
       if (!check) return;
+      trackInteraction("gcode_check_activated", { 
+        status: check.status, 
+        machine: config.machineId,
+        model_depth: modelDeep
+      });
       setGcodeCheck({
         rule: "pocket-reach",
         status: check.status,
@@ -115,7 +137,7 @@ export function PreflightPanel({ result, isParsing, fileName }: PreflightPanelPr
         detail: check.detail,
       });
     },
-    [result],
+    [result, config.machineId],
   );
 
   if (isParsing) {

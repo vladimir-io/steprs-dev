@@ -36,6 +36,7 @@ import type { ParseResult, WorkerOutboundMessage, ModelSnapshot } from "@steprs/
 
 import { readShareHash, clearShareHash } from "@/lib/preflight/share-report";
 import type { SharedReportPayload } from "@/lib/preflight/share-report";
+import { trackInteraction } from "@/lib/telemetry";
 
 import { ConvertToStep } from "./convert-to-step";
 import { SharedReportView } from "./shared-report-view";
@@ -393,6 +394,8 @@ export function ToolsWorkspace() {
       setFileName(sanitizeDisplayFilename(file.name));
       setFileSize(file.size);
       fileSizeRef.current = file.size;
+      
+      trackInteraction("file_dropped", { size_bytes: file.size });
 
       setFileSessionKey((key) => key + 1);
       setResult(null);

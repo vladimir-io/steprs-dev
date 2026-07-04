@@ -5012,3 +5012,52 @@ html.dark .llm-context-copy:hover:not(:disabled) {
 }
 
 @import "./workbench.css";
+
+/* pSEO Page Styles */
+.pseo-page {
+  min-height: 100vh;
+  background: var(--steprs-bg);
+  color: var(--steprs-fg);
+}
+.pseo-page .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.pseo-header {
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+.pseo-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+.pseo-header h1 span {
+  color: var(--steprs-accent);
+}
+.pseo-verdict {
+  font-size: 1.25rem;
+  padding: 1rem 1.5rem;
+  background: var(--steprs-surface);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  border: 1px solid var(--steprs-border);
+}
+.verdict-fail strong {
+  color: var(--steprs-error, #dc2626);
+}
+.verdict-pass strong {
+  color: var(--steprs-success, #16a34a);
+}
+.pseo-lead {
+  font-size: 1.125rem;
+  opacity: 0.8;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.pseo-sandbox-section {
+  padding: 2rem;
+}

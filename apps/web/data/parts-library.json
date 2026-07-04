@@ -1,0 +1,112 @@
+[
+  {
+    "slug": "nema-23-mount",
+    "name": "NEMA 23 Standard Motor Mount",
+    "description": "Standard NEMA 23 stepper motor mounting bracket with slotted tensioning holes.",
+    "result": {
+      "success": true,
+      "engine_version": "0.1.0",
+      "stats": {
+        "parse_duration_ms": 12,
+        "entity_count": 450,
+        "stages_completed": ["read", "topology", "features"],
+        "storage_mode": "memory"
+      },
+      "bounding_box": { "x_min": 0, "x_max": 80, "y_min": 0, "y_max": 80, "z_min": 0, "z_max": 12 },
+      "quoting": {
+        "part_envelope_mm": { "dimensions": { "x": 80, "y": 80, "z": 12 } },
+        "setup_count": 1,
+        "requires_5_axis": false,
+        "undercuts": [],
+        "min_internal_tool_diameter_mm": 3.175,
+        "pockets": [],
+        "holes": [
+          { "surface_id": 1, "diameter_mm": 5.1, "depth_mm": 12, "instance_count": 4, "kind": "through_hole", "axis": [0,0,1], "center": [0,0,0] },
+          { "surface_id": 2, "diameter_mm": 38.1, "depth_mm": 12, "instance_count": 1, "kind": "through_hole", "axis": [0,0,1], "center": [0,0,0] }
+        ]
+      },
+      "aag": {
+        "faces": 45,
+        "concave_edges": 12,
+        "convex_edges": 48
+      },
+      "labels": {
+        "user_labels": {}
+      }
+    }
+  },
+  {
+    "slug": "voron-24-z-drive",
+    "name": "Voron 2.4 Z-Drive Assembly",
+    "description": "Z-axis drive motor mount and belt tensioner for Voron 2.4.",
+    "result": {
+      "success": true,
+      "engine_version": "0.1.0",
+      "stats": {
+        "parse_duration_ms": 25,
+        "entity_count": 1200,
+        "stages_completed": ["read", "topology", "features"],
+        "storage_mode": "memory"
+      },
+      "bounding_box": { "x_min": 0, "x_max": 120, "y_min": 0, "y_max": 95, "z_min": 0, "z_max": 25 },
+      "quoting": {
+        "part_envelope_mm": { "dimensions": { "x": 120, "y": 95, "z": 25 } },
+        "setup_count": 1,
+        "requires_5_axis": false,
+        "undercuts": [],
+        "min_internal_tool_diameter_mm": 2.5,
+        "pockets": [
+          { "id": 1, "depth_mm": 15, "area_mm2": 450, "surface_ids": [1,2,3] }
+        ],
+        "holes": [
+          { "surface_id": 3, "diameter_mm": 3.3, "depth_mm": 25, "instance_count": 6, "kind": "through_hole", "axis": [0,0,1], "center": [0,0,0] },
+          { "surface_id": 4, "diameter_mm": 4.2, "depth_mm": 10, "instance_count": 2, "kind": "blind_drill_point", "axis": [0,0,1], "center": [0,0,0] }
+        ]
+      },
+      "aag": {
+        "faces": 82,
+        "concave_edges": 24,
+        "convex_edges": 80
+      },
+      "labels": {
+        "user_labels": {}
+      }
+    }
+  },
+  {
+    "slug": "printnc-y-plate",
+    "name": "PrintNC Y-Axis Roller Plate",
+    "description": "Heavy-duty steel or aluminum plate for PrintNC Y-axis gantry.",
+    "result": {
+      "success": true,
+      "engine_version": "0.1.0",
+      "stats": {
+        "parse_duration_ms": 18,
+        "entity_count": 850,
+        "stages_completed": ["read", "topology", "features"],
+        "storage_mode": "memory"
+      },
+      "bounding_box": { "x_min": 0, "x_max": 200, "y_min": 0, "y_max": 150, "z_min": 0, "z_max": 12.7 },
+      "quoting": {
+        "part_envelope_mm": { "dimensions": { "x": 200, "y": 150, "z": 12.7 } },
+        "setup_count": 1,
+        "requires_5_axis": false,
+        "undercuts": [],
+        "min_internal_tool_diameter_mm": 6.35,
+        "pockets": [],
+        "holes": [
+          { "surface_id": 5, "diameter_mm": 6.8, "depth_mm": 12.7, "instance_count": 8, "kind": "through_hole", "axis": [0,0,1], "center": [0,0,0] },
+          { "surface_id": 6, "diameter_mm": 12.0, "depth_mm": 12.7, "instance_count": 4, "kind": "through_hole", "axis": [0,0,1], "center": [0,0,0] }
+        ]
+      },
+      "aag": {
+        "faces": 34,
+        "concave_edges": 8,
+        "convex_edges": 30
+      },
+      "labels": {
+        "user_labels": {}
+      }
+    }
+  }
+]
