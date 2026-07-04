@@ -14,16 +14,16 @@
   --steprs-fg-muted: #71717a;
   --steprs-fg-subtle: #a1a1aa;
 
-  --steprs-accent: #09090b;
-  --steprs-accent-hover: #27272a;
+  --steprs-accent: #ff5722;
+  --steprs-accent-hover: #e64a19;
   --steprs-accent-muted: #f4f4f5;
   --steprs-accent-fg: #ffffff;
   --steprs-accent-glow: transparent;
-  --steprs-link: #09090b;
+  --steprs-link: #ff5722;
 
   --steprs-danger: #dc2626;
   --steprs-danger-fg: #ffffff;
-  --steprs-warn: #ca8a04;
+  --steprs-warn: #ffd600;
   --steprs-warn-fg: #09090b;
   --steprs-positive: #16a34a;
   --steprs-positive-fg: #ffffff;
@@ -161,33 +161,33 @@
 html.dark {
   color-scheme: dark;
 
-  --steprs-bg: #09090b;
-  --steprs-bg-subtle: #0c0c0e;
+  --steprs-bg: #0d0e11;
+  --steprs-bg-subtle: #111215;
   --steprs-fg: #fafafa;
   --steprs-fg-muted: #a1a1aa;
   --steprs-fg-subtle: #71717a;
 
-  --steprs-accent: #fafafa;
-  --steprs-accent-hover: #e4e4e7;
+  --steprs-accent: #ff5722;
+  --steprs-accent-hover: #e64a19;
   --steprs-accent-muted: #18181b;
-  --steprs-accent-fg: #09090b;
-  --steprs-link: #fafafa;
+  --steprs-accent-fg: #ffffff;
+  --steprs-link: #ff5722;
 
-  --steprs-danger: #f87171;
-  --steprs-danger-fg: #09090b;
-  --steprs-warn: #facc15;
+  --steprs-danger: #dc2626;
+  --steprs-danger-fg: #ffffff;
+  --steprs-warn: #ffd600;
   --steprs-warn-fg: #09090b;
   --steprs-positive: #4ade80;
   --steprs-positive-fg: #09090b;
 
   --steprs-shadow-viewer: inset 0 0 0 1px var(--steprs-border);
 
-  --steprs-panel: #09090b;
-  --steprs-panel-muted: #111113;
+  --steprs-panel: #0d0e11;
+  --steprs-panel-muted: #111215;
   --steprs-panel-inset: #0c0c0e;
   --steprs-panel-active: #18181b;
-  --steprs-surface: #09090b;
-  --steprs-surface-elevated: #111113;
+  --steprs-surface: #0d0e11;
+  --steprs-surface-elevated: #111215;
   --steprs-surface-sunken: #000000;
   --steprs-border: #27272a;
   --steprs-border-strong: #3f3f46;
@@ -207,7 +207,7 @@ html.dark {
   --steprs-chrome-bg: rgba(9, 9, 11, 0.92);
   --steprs-chrome-shadow: 0 1px 0 var(--steprs-border);
 
-  --steprs-ambient-base: #09090b;
+  --steprs-ambient-base: #0d0e11;
 
   --steprs-drop-bg: #0c0c0e;
   --steprs-drop-bg-hover: #111113;

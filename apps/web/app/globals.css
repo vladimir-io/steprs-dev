@@ -3819,23 +3819,23 @@ html.dark .file-toast__panel {
 }
 
 .machinability-badge--clean-cut .machinability-badge__value {
-  color: #34d399;
+  color: #16a34a;
 }
 
 .machinability-badge--shop-ready .machinability-badge__value {
-  color: #4ade80;
+  color: #0ea5e9;
 }
 
 .machinability-badge--needs-review .machinability-badge__value {
-  color: #fbbf24;
+  color: #ffd600;
 }
 
 .machinability-badge--headache .machinability-badge__value {
-  color: #fb923c;
+  color: #ff5722;
 }
 
 .machinability-badge--nightmare-fuel .machinability-badge__value {
-  color: #f87171;
+  color: #dc2626;
 }
 
 .machinability-badge__label {

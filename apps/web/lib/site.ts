@@ -2,15 +2,15 @@
 
 export const siteConfig = {
   name: "steprs.dev",
-  tagline: "STEP pre-flight before CAM",
+  tagline: "Client-side STEP triage. Zero upload. No machine crashes.",
   title: "steprs.dev | STEP pre-flight before CAM",
   shortTitle: "steprs.dev | STEP pre-flight before CAM",
   description:
-    "Drop a STEP file. Check units, holes, stock size, and whether the part fits your machine and tools. Runs in your browser — nothing uploads.",
+    "Run your STEP files through an instant, local pre-flight check before opening heavy CAM software. Verify tool reach, Z-axis stack clearance, and workholding fits in 60 milliseconds. 100% inside your browser worker via Rust WebAssembly.",
   ogDescription:
     "STEP pre-flight for CNC: header, holes, stock, machine fit, tool reach. Local in the browser.",
-  heroLead: "Drop a STEP. Check it before you open CAM.",
-  heroLeadSub: "Units, holes, stock, machine fit — in your browser.",
+  heroLead: "Client-side STEP triage. Zero upload. No machine crashes.",
+  heroLeadSub: "Because a snapped endmill is a terrible way to discover a deep pocket.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://steprs.dev",
   locale: "en_US",
   copyrightYear: 2026,

@@ -129,6 +129,15 @@ export const MACHINES: MachineProfile[] = [
     spindleMaxRpm: 6000,
     axes: 3,
   },
+  {
+    id: "generic-vmc-40-taper",
+    label: "Generic VMC (40-Taper)",
+    category: "vmc",
+    travelMm: { x: 762, y: 406, z: 508 },
+    zClearanceMm: 508,
+    spindleMaxRpm: 12000,
+    axes: 3,
+  },
 ];
 
 export const DEFAULT_MACHINE_ID = "shapeoko-4-standard";

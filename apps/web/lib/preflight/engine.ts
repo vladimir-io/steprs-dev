@@ -162,31 +162,31 @@ function checkEnvelopeFit(
 
 function checkViseFit(
   workholding: WorkholdingProfile,
-  partL: number,
-  partW: number,
+  stockL: number,
+  stockW: number,
 ): PreflightCheck {
   // Grip across the narrower dimension.
-  if (partW > workholding.jawOpeningMm) {
+  if (stockW > workholding.jawOpeningMm) {
     return {
       rule: "vise-fit",
       status: "fail",
-      title: "Part wider than jaw opening",
-      detail: `Narrow side is ${fmt(partW)} mm but ${workholding.label} opens ${fmt(workholding.jawOpeningMm)} mm max. Use a fixture plate, clamps, or soft-jaw extensions.`,
+      title: "Stock wider than jaw opening",
+      detail: `Narrow side is ${fmt(stockW)} mm but ${workholding.label} opens ${fmt(workholding.jawOpeningMm)} mm max. Use a fixture plate, clamps, or soft-jaw extensions.`,
     };
   }
-  if (partL > workholding.jawWidthMm * 1.5) {
+  if (stockL > workholding.jawWidthMm * 1.5) {
     return {
       rule: "vise-fit",
       status: "warn",
       title: "Long overhang past the jaws",
-      detail: `Part length ${fmt(partL)} mm overhangs ${workholding.label} jaws (${fmt(workholding.jawWidthMm)} mm wide) by more than 50%. Support the ends or expect chatter.`,
+      detail: `Stock length ${fmt(stockL)} mm overhangs ${workholding.label} jaws (${fmt(workholding.jawWidthMm)} mm wide) by more than 50%. Support the ends or expect chatter.`,
     };
   }
   return {
     rule: "vise-fit",
     status: "pass",
-    title: "Workholding grips the part",
-    detail: `${fmt(partW)} mm grip inside ${workholding.label} ${fmt(workholding.jawOpeningMm)} mm opening.`,
+    title: "Workholding grips the stock",
+    detail: `${fmt(stockW)} mm grip inside ${workholding.label} ${fmt(workholding.jawOpeningMm)} mm opening.`,
   };
 }
 
